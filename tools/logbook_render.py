@@ -20,9 +20,11 @@ from tools.logbook_data import (
     crew_chief_note,
     daily_trend,
     daily_win_rate,
+    driver_record,
     is_vehicle_body_change,
     group_by_car,
     humanize_car_id,
+    humanize_event,
     result_label,
     summarize_car,
     win_ratio,
@@ -206,8 +208,98 @@ def render_logbook(
           </table>
         </details>
         <p class="note">Numbers come from production telemetry for this device id. Opponent and part names are ids, not invented history.</p>
-        <p class="back"><a href="/cars?user_id={_esc(user_id)}">All cars</a></p>
+        {_book_links(user_id, car_id, on_driver=False)}
         """,
+    )
+
+
+def render_driver(user_id: str, car_id: str, races: list[RaceRow]) -> str:
+    """Driver-style home for one car, built only from this book's runs."""
+    car_races = [race for race in races if race.car == car_id]
+    record = driver_record(car_races)
+    level = next((race.car_level for race in car_races if race.car_level is not None), None)
+    level_text = f"LEVEL {level}" if level is not None else "LEVEL —"
+    years = " · ".join(record["years"]) if record["years"] else "THIS BOOK"
+    wash, stripe = car_theme(car_id)
+    return _page(
+        title=_title_name(car_id),
+        wash=wash,
+        stripe=stripe,
+        body=f"""
+        <header class="mast">
+          <p class="brand">NHRA LEGENDS · DRIVER</p>
+          <p class="eyebrow">{_esc(level_text)} · {_esc(years)}</p>
+          <h1>{_esc(_title_name(car_id))}</h1>
+          <p class="lead">Record from this device's runs in this car.</p>
+        </header>
+        <section class="driver-stats">
+          <article><strong>{_esc(record['wins'])}</strong><span>WINS</span></article>
+          <article><strong>{_esc(record['races'])}</strong><span>RACES</span></article>
+          <article><strong>{_esc(_fmt(record['best_et']))}</strong><span>BEST ET</span></article>
+          <article><strong>{_esc(_fmt(record['best_mph'], 1))}</strong><span>BEST MPH</span></article>
+        </section>
+        <section class="driver-block">
+          <h2>Highlights</h2>
+          <ul>{_highlights(record)}</ul>
+        </section>
+        <section class="driver-block">
+          <h2>Results</h2>
+          {_event_table(record)}
+        </section>
+        {_book_links(user_id, car_id, on_driver=True)}
+        """,
+    )
+
+
+def _book_links(user_id: str, car_id: str, *, on_driver: bool) -> str:
+    """All-cars link, plus Driver on the book and Car book on the driver page."""
+    cars = f'<a href="/cars?user_id={_esc(user_id)}">All cars</a>'
+    if on_driver:
+        other = f'<a href="/logbook?user_id={_esc(user_id)}&car={_esc(car_id)}">Car book</a>'
+    else:
+        other = f'<a href="/driver?user_id={_esc(user_id)}&car={_esc(car_id)}">Driver</a>'
+    return f'<p class="back links">{cars}{other}</p>'
+
+
+def _count(amount: int, word: str) -> str:
+    """Pluralize a count word."""
+    return f"{amount} {word}" if amount == 1 else f"{amount} {word}s"
+
+
+def _highlights(record: dict[str, Any]) -> str:
+    """Short factual lines. Dates and counts come from driver_record."""
+    lines = [
+        f"{_count(record['wins'], 'win')} and {_count(record['losses'], 'loss')} in {record['races']} races."
+    ]
+    if record["best_et"] is not None:
+        lines.append(f"Best ET {_fmt(record['best_et'])} on {record['best_et_at']}.")
+    if record["best_mph"] is not None:
+        lines.append(f"Best speed {_fmt(record['best_mph'], 1)} mph on {record['best_mph_at']}.")
+    reds = record["red_lights"]
+    if reds:
+        word = "red light" if reds == 1 else "red lights"
+        lines.append(f"{reds} {word}.")
+    return "".join(f"<li>{_esc(line)}</li>" for line in lines)
+
+
+def _event_table(record: dict[str, Any]) -> str:
+    """One row per race-event id in this book."""
+    if not record["events"]:
+        return "<p class='empty'>No completed races in this window.</p>"
+    rows = []
+    for event in record["events"]:
+        rows.append(
+            "<tr>"
+            f"<td>{_esc(humanize_event(event['event']))}</td>"
+            f"<td>{_esc(event['races'])}</td>"
+            f"<td>{_esc(event['wins'])}-{_esc(event['losses'])}</td>"
+            f"<td class='et'>{_esc(_fmt(event['best_et']))}</td>"
+            "</tr>"
+        )
+    return (
+        "<div class='sheet'><table><thead><tr>"
+        "<th>Event</th><th>Runs</th><th>W-L</th><th>Best ET</th>"
+        f"</tr></thead><tbody>{''.join(rows)}</tbody></table></div>"
     )
 
 

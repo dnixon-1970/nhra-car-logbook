@@ -19,7 +19,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from tools.logbook_data import fetch_races, load_cache, save_cache
-from tools.logbook_render import render_home, render_logbook, render_picker
+from tools.logbook_render import render_driver, render_home, render_logbook, render_picker
 
 CSS_PATH = ROOT / "logbook" / "logbook.css"
 HOST = "127.0.0.1"
@@ -54,6 +54,13 @@ class Handler(BaseHTTPRequestHandler):
                     self._send(render_home("Enter a Concrete Device ID."))
                     return
                 self._send(render_picker(user_id, history_for(user_id)[0]))
+                return
+            if parsed.path == "/driver":
+                if not user_id or not car:
+                    self._send(render_home("User id and car are both required."))
+                    return
+                races, _milestones = history_for(user_id)
+                self._send(render_driver(user_id, car, races))
                 return
             if parsed.path == "/logbook":
                 if not user_id or not car:

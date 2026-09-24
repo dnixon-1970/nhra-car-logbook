@@ -290,6 +290,49 @@ tr.mark-hit td {
 .error { color: var(--gold); }
 
 .back a { color: var(--gold); }
+.links { display: flex; gap: 22px; }
+
+.driver-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0 8px;
+}
+
+.driver-stats article {
+  padding: 12px 12px 10px;
+  border-top: 4px solid var(--stripe);
+}
+
+.driver-stats strong {
+  display: block;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.driver-stats span {
+  display: block;
+  margin-top: 4px;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.driver-block { margin: 18px 0; }
+.driver-block h2 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--stripe);
+}
+.driver-block ul { margin: 0; padding-left: 18px; }
+.driver-block li { margin: 4px 0; line-height: 1.35; }
 
 @media (max-width: 800px) {
   .metric-picker select { font-size: 18px; }

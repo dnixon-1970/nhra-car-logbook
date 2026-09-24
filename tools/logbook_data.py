@@ -8,6 +8,7 @@ The two rows share `GUID`.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -67,6 +68,13 @@ def humanize_car_id(car_id: str) -> str:
     return cleaned.upper() if cleaned else "UNKNOWN CAR"
 
 
+def humanize_event(event_id: str) -> str:
+    """Turn a race-event id into a label without inventing a track or round."""
+    spaced = re.sub(r"(?<=[a-z])(?=[A-Z])", " ", event_id)
+    cleaned = spaced.replace("_", " ").replace("-", " ").strip()
+    return cleaned.upper() if cleaned else "UNKNOWN EVENT"
+
+
 def result_label(result: str) -> str:
     """Map the analytics enum to the timeslip stamp."""
     return RESULT_LABELS.get(result, result or "—")
@@ -102,6 +110,40 @@ def summarize_car(races: list[RaceRow]) -> dict[str, Any]:
         ),
         "best_60": _best([race.time_to_60 for race in races], lowest=True),
         "best_mph": _best([race.top_speed_mph for race in races], lowest=False),
+    }
+
+
+def driver_record(races: list[RaceRow]) -> dict[str, Any]:
+    """Wins, bests, and per-event totals for one car. Facts stay inside these runs."""
+    summary = summarize_car(races)
+    best_et_race = _extreme_race(races, "total_time", lowest=True)
+    best_mph_race = _extreme_race(races, "top_speed_mph", lowest=False)
+    grouped: dict[str, list[RaceRow]] = {}
+    for race in races:
+        grouped.setdefault(race.race_event or "", []).append(race)
+    events = []
+    for name, group in grouped.items():
+        event_summary = summarize_car(group)
+        events.append(
+            {
+                "event": name,
+                "races": event_summary["races"],
+                "wins": event_summary["wins"],
+                "losses": event_summary["losses"],
+                "best_et": event_summary["best_et"],
+            }
+        )
+    events.sort(key=lambda item: (-item["races"], item["event"]))
+    years = sorted({race.raced_at[:4] for race in races if len(race.raced_at) >= 4 and race.raced_at[:4].isdigit()})
+    recent = sorted(races, key=lambda race: race.raced_at, reverse=True)[:6]
+    return {
+        **summary,
+        "best_et_at": best_et_race.raced_at[:10] if best_et_race else "",
+        "best_mph_at": best_mph_race.raced_at[:10] if best_mph_race else "",
+        "red_lights": sum(1 for race in races if race.red_light),
+        "events": events,
+        "recent": recent,
+        "years": years,
     }
 
 
@@ -690,6 +732,20 @@ LIMIT 1
     if not rows or not rows[0]["user_id"]:
         raise RuntimeError("No recent production user_id found")
     return str(rows[0]["user_id"])
+
+
+def _extreme_race(races: list[RaceRow], attr: str, *, lowest: bool) -> Optional[RaceRow]:
+    """Race with the lowest or highest value of one timeslip field."""
+    chosen: Optional[RaceRow] = None
+    chosen_value: Optional[float] = None
+    for race in races:
+        value = getattr(race, attr)
+        if value is None or value < 0:
+            continue
+        if chosen_value is None or (value < chosen_value if lowest else value > chosen_value):
+            chosen = race
+            chosen_value = value
+    return chosen
 
 
 def cache_path(user_id: str) -> Path:

@@ -17,7 +17,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from tools.logbook_data import group_by_car, load_cache
-from tools.logbook_render import render_logbook, render_picker
+from tools.logbook_render import render_driver, render_logbook, render_picker
 
 DOCS = ROOT / "docs"
 CSS = ROOT / "logbook" / "logbook.css"
@@ -25,6 +25,11 @@ CSS = ROOT / "logbook" / "logbook.css"
 
 def to_static(page: str) -> str:
     """Point stylesheet and car links at files in the same folder."""
+    page = re.sub(
+        r"/driver\?user_id=[^\"&\s]+(?:&|&amp;)car=([^\"\s]+)",
+        lambda match: f"{unescape(match.group(1))}-driver.html",
+        page,
+    )
     page = page.replace('href="/logbook.css"', 'href="logbook.css"')
     page = page.replace('href="/"', 'href="index.html"')
     page = re.sub(r"/cars\?user_id=[^\"\s]+", "index.html", page)
@@ -77,6 +82,8 @@ def export_snapshot(user_id: str) -> Path:
     for car_id in group_by_car(races):
         page = render_logbook(user_id, car_id, races, milestones)
         (DOCS / f"{car_id}.html").write_text(to_static(page), encoding="utf-8")
+        driver = render_driver(user_id, car_id, races)
+        (DOCS / f"{car_id}-driver.html").write_text(to_static(driver), encoding="utf-8")
     return DOCS
 
 

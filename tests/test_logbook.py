@@ -17,6 +17,7 @@ from tools.logbook_data import (  # noqa: E402
     config_milestones,
     daily_trend,
     daily_win_rate,
+    driver_record,
     record_runs,
     group_by_car,
     humanize_car_id,
@@ -26,7 +27,7 @@ from tools.logbook_data import (  # noqa: E402
     summarize_car,
 )
 from tools.export_pages import to_static, with_vehicle_redirect  # noqa: E402
-from tools.logbook_render import render_logbook  # noqa: E402
+from tools.logbook_render import render_driver, render_logbook  # noqa: E402
 
 
 def _race(**overrides) -> RaceRow:
@@ -226,6 +227,44 @@ class LogbookDataTests(unittest.TestCase):
         self.assertIn("--wash: #0e3a78", charger)
         self.assertIn("--stripe: #f4f7fb", charger)
 
+    def test_driver_page_uses_only_this_book(self) -> None:
+        races = [
+            _race(
+                car="Vehicle_Muldowney1977",
+                race_event="MilestoneMuldowney1977_10",
+                total_time=4.012,
+                top_speed_mph=300.2,
+                raced_at="2026-09-23 18:00 UTC",
+            ),
+            _race(
+                car="Vehicle_Muldowney1977",
+                result="PlayerLost",
+                race_event="TestTune",
+                total_time=4.5,
+                top_speed_mph=280.0,
+                raced_at="2026-09-22 18:00 UTC",
+                red_light=True,
+            ),
+        ]
+        record = driver_record(races)
+        self.assertEqual(record["wins"], 1)
+        self.assertEqual(record["losses"], 1)
+        self.assertEqual(record["best_et"], 4.012)
+        self.assertEqual(record["best_et_at"], "2026-09-23")
+        page = render_driver("device-1", "Vehicle_Muldowney1977", races)
+        self.assertIn("NHRA LEGENDS · DRIVER", page)
+        self.assertIn(">All cars<", page)
+        self.assertIn(">Car book<", page)
+        self.assertIn("MILESTONE MULDOWNEY1977 10", page)
+        self.assertIn("1 win and 1 loss", page)
+        self.assertIn("4.012", page)
+        self.assertIn("1 red light", page)
+        self.assertNotIn("Hometown", page)
+        self.assertNotIn("Sponsor", page)
+        book = render_logbook("device-1", "Vehicle_Muldowney1977", races)
+        self.assertIn(">Driver<", book)
+        self.assertIn(">All cars<", book)
+
 
 class StaticExportTests(unittest.TestCase):
     def test_links_become_files(self) -> None:
@@ -234,11 +273,13 @@ class StaticExportTests(unittest.TestCase):
             '<a href="/">Different id</a>'
             '<a href="/cars?user_id=device-1">All cars</a>'
             '<a href="/logbook?user_id=device-1&amp;car=Vehicle_SoxMartin">Sox</a>'
+            '<a href="/driver?user_id=device-1&amp;car=Vehicle_SoxMartin">Driver</a>'
         )
         static = to_static(page)
         self.assertIn('href="logbook.css"', static)
         self.assertIn('href="index.html"', static)
         self.assertIn('href="Vehicle_SoxMartin.html"', static)
+        self.assertIn('href="Vehicle_SoxMartin-driver.html"', static)
         self.assertNotIn("/logbook?", static)
 
     def test_garage_honors_vehicle_query(self) -> None:
