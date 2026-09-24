@@ -1,0 +1,10 @@
+{
+  "slack": {
+    "bot_token": "xoxb-your-token-here",
+    "read_only": true
+  },
+  "bq": {
+    "project_id": "nhra-64ac5",
+    "dataset": "analytics_490826646"
+  }
+}
