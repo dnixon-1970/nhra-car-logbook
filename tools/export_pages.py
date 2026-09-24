@@ -35,6 +35,33 @@ def to_static(page: str) -> str:
     return re.sub(r"/logbook\?user_id=[^\"&\s]+(?:&|&amp;)car=([^\"\s]+)", _car_file, page)
 
 
+_VEHICLE_REDIRECT = """<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var vehicle = params.get("vehicle") || params.get("car");
+  if (!vehicle) return;
+  var wanted = vehicle.replace(/\\.html$/i, "").toLowerCase();
+  var links = document.querySelectorAll("a.car-card");
+  for (var i = 0; i < links.length; i++) {
+    var href = links[i].getAttribute("href") || "";
+    var stem = href.split("/").pop().replace(/\\.html$/i, "").toLowerCase();
+    if (stem === wanted) {
+      location.replace(href);
+      return;
+    }
+  }
+})();
+</script>
+"""
+
+
+def with_vehicle_redirect(page: str) -> str:
+    """Open a car book when the garage URL includes ?vehicle= or ?car=."""
+    if "</body>" in page:
+        return page.replace("</body>", _VEHICLE_REDIRECT + "</body>", 1)
+    return page + _VEHICLE_REDIRECT
+
+
 def export_snapshot(user_id: str) -> Path:
     """Render the cached garage and one page per car into docs/."""
     cached = load_cache(user_id)
@@ -45,7 +72,8 @@ def export_snapshot(user_id: str) -> Path:
         shutil.rmtree(DOCS)
     DOCS.mkdir()
     shutil.copyfile(CSS, DOCS / "logbook.css")
-    (DOCS / "index.html").write_text(to_static(render_picker(user_id, races)), encoding="utf-8")
+    garage = with_vehicle_redirect(to_static(render_picker(user_id, races)))
+    (DOCS / "index.html").write_text(garage, encoding="utf-8")
     for car_id in group_by_car(races):
         page = render_logbook(user_id, car_id, races, milestones)
         (DOCS / f"{car_id}.html").write_text(to_static(page), encoding="utf-8")

@@ -25,6 +25,8 @@ The id on the form is the Analytics `user_id` (Concrete Device ID), not a Fireba
 
 GitHub Pages cannot query BigQuery. `tools/export_pages.py` writes the cached garage into `docs/` as plain HTML. That folder is what Pages serves.
 
+Add `?vehicle=` with the car id to open that book instead of the garage: `?vehicle=Vehicle_Muldowney1977`. `?car=` does the same. The car file also works on its own: `Vehicle_Muldowney1977.html`.
+
 ## Slack reads
 
 Same credential store as Slack Integration Test. This repo does not copy the bot token.

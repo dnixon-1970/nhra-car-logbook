@@ -193,5 +193,22 @@
       </div>
     </div>
   </div>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var vehicle = params.get("vehicle") || params.get("car");
+  if (!vehicle) return;
+  var wanted = vehicle.replace(/\.html$/i, "").toLowerCase();
+  var links = document.querySelectorAll("a.car-card");
+  for (var i = 0; i < links.length; i++) {
+    var href = links[i].getAttribute("href") || "";
+    var stem = href.split("/").pop().replace(/\.html$/i, "").toLowerCase();
+    if (stem === wanted) {
+      location.replace(href);
+      return;
+    }
+  }
+})();
+</script>
 </body>
 </html>

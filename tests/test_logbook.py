@@ -25,7 +25,7 @@ from tools.logbook_data import (  # noqa: E402
     rows_from_query,
     summarize_car,
 )
-from tools.export_pages import to_static  # noqa: E402
+from tools.export_pages import to_static, with_vehicle_redirect  # noqa: E402
 from tools.logbook_render import render_logbook  # noqa: E402
 
 
@@ -240,6 +240,12 @@ class StaticExportTests(unittest.TestCase):
         self.assertIn('href="index.html"', static)
         self.assertIn('href="Vehicle_SoxMartin.html"', static)
         self.assertNotIn("/logbook?", static)
+
+    def test_garage_honors_vehicle_query(self) -> None:
+        page = with_vehicle_redirect('<a class="car-card" href="Vehicle_SoxMartin.html"></a></body>')
+        self.assertIn('params.get("vehicle")', page)
+        self.assertIn('params.get("car")', page)
+        self.assertIn("location.replace", page)
 
 
 if __name__ == "__main__":
