@@ -56,11 +56,11 @@ class Handler(BaseHTTPRequestHandler):
                 self._send(render_picker(user_id, history_for(user_id)[0]))
                 return
             if parsed.path == "/driver":
-                if not user_id or not car:
-                    self._send(render_home("User id and car are both required."))
+                if not user_id:
+                    self._send(render_home("Enter a Concrete Device ID."))
                     return
                 races, _milestones = history_for(user_id)
-                self._send(render_driver(user_id, car, races))
+                self._send(render_driver(user_id, races))
                 return
             if parsed.path == "/logbook":
                 if not user_id or not car:

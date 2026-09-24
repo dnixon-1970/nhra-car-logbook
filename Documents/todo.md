@@ -15,7 +15,7 @@
 - [x] **2026-09-24:** ADC refreshed. Live book rendered for `526d41cb-58f3-47a9-86e4-8a74d4084547` (7,414 finishes / 30 days). Open http://127.0.0.1:8787
 - [ ] Cross-model review of the setup plan
 - [x] **2026-09-24:** Static snapshot in `docs/` for GitHub Pages. No Jira id; published because the share was requested.
-- [x] **2026-09-24:** Driver page per car, linked beside All cars. Stats come from that car's runs only.
+- [x] **2026-09-24:** One driver page for the player, linked beside All cars. Stats combine every car. Callouts: most raced car, fastest RT.
 - [ ] Human: whether a "view logbook" button in the game is in scope later
 - [ ] Do not add this repo to `~/bin/sync-external-repos.sh` unless asked
 

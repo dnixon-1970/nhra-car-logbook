@@ -25,11 +25,7 @@ CSS = ROOT / "logbook" / "logbook.css"
 
 def to_static(page: str) -> str:
     """Point stylesheet and car links at files in the same folder."""
-    page = re.sub(
-        r"/driver\?user_id=[^\"&\s]+(?:&|&amp;)car=([^\"\s]+)",
-        lambda match: f"{unescape(match.group(1))}-driver.html",
-        page,
-    )
+    page = re.sub(r"/driver\?user_id=[^\"\s]+", "driver.html", page)
     page = page.replace('href="/logbook.css"', 'href="logbook.css"')
     page = page.replace('href="/"', 'href="index.html"')
     page = re.sub(r"/cars\?user_id=[^\"\s]+", "index.html", page)
@@ -79,11 +75,10 @@ def export_snapshot(user_id: str) -> Path:
     shutil.copyfile(CSS, DOCS / "logbook.css")
     garage = with_vehicle_redirect(to_static(render_picker(user_id, races)))
     (DOCS / "index.html").write_text(garage, encoding="utf-8")
+    (DOCS / "driver.html").write_text(to_static(render_driver(user_id, races)), encoding="utf-8")
     for car_id in group_by_car(races):
         page = render_logbook(user_id, car_id, races, milestones)
         (DOCS / f"{car_id}.html").write_text(to_static(page), encoding="utf-8")
-        driver = render_driver(user_id, car_id, races)
-        (DOCS / f"{car_id}-driver.html").write_text(to_static(driver), encoding="utf-8")
     return DOCS
 
 

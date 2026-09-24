@@ -321,6 +321,46 @@ tr.mark-hit td {
   color: var(--navy);
 }
 
+.callouts {
+  display: grid;
+  gap: 10px;
+  margin: 8px 0 4px;
+}
+
+.callouts article {
+  padding: 12px 14px 10px;
+  background: var(--cream);
+  color: var(--ink);
+  border-top: 4px solid var(--stripe);
+}
+
+.callouts span {
+  display: block;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.callouts strong {
+  display: block;
+  margin-top: 4px;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.callouts em {
+  display: block;
+  margin-top: 4px;
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--metal);
+}
+
 .driver-block { margin: 18px 0; }
 .driver-block h2 {
   margin: 0 0 8px;

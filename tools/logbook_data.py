@@ -114,35 +114,43 @@ def summarize_car(races: list[RaceRow]) -> dict[str, Any]:
 
 
 def driver_record(races: list[RaceRow]) -> dict[str, Any]:
-    """Wins, bests, and per-event totals for one car. Facts stay inside these runs."""
+    """Combined record for one player across every car in the book."""
     summary = summarize_car(races)
     best_et_race = _extreme_race(races, "total_time", lowest=True)
     best_mph_race = _extreme_race(races, "top_speed_mph", lowest=False)
-    grouped: dict[str, list[RaceRow]] = {}
+    fastest = _extreme_race(races, "reaction_time", lowest=True)
+    by_car: dict[str, list[RaceRow]] = {}
     for race in races:
-        grouped.setdefault(race.race_event or "", []).append(race)
-    events = []
-    for name, group in grouped.items():
-        event_summary = summarize_car(group)
-        events.append(
+        by_car.setdefault(race.car or "", []).append(race)
+    most_car = ""
+    most_count = 0
+    if by_car:
+        most_car = max(by_car, key=lambda car: (len(by_car[car]), car))
+        most_count = len(by_car[most_car])
+    cars = []
+    for car, group in by_car.items():
+        car_summary = summarize_car(group)
+        cars.append(
             {
-                "event": name,
-                "races": event_summary["races"],
-                "wins": event_summary["wins"],
-                "losses": event_summary["losses"],
-                "best_et": event_summary["best_et"],
+                "car": car,
+                "races": car_summary["races"],
+                "wins": car_summary["wins"],
+                "losses": car_summary["losses"],
+                "best_et": car_summary["best_et"],
             }
         )
-    events.sort(key=lambda item: (-item["races"], item["event"]))
+    cars.sort(key=lambda item: (-item["races"], item["car"]))
     years = sorted({race.raced_at[:4] for race in races if len(race.raced_at) >= 4 and race.raced_at[:4].isdigit()})
-    recent = sorted(races, key=lambda race: race.raced_at, reverse=True)[:6]
     return {
         **summary,
         "best_et_at": best_et_race.raced_at[:10] if best_et_race else "",
         "best_mph_at": best_mph_race.raced_at[:10] if best_mph_race else "",
-        "red_lights": sum(1 for race in races if race.red_light),
-        "events": events,
-        "recent": recent,
+        "fastest_rt": fastest.reaction_time if fastest else None,
+        "fastest_rt_car": fastest.car if fastest else "",
+        "fastest_rt_at": fastest.raced_at[:10] if fastest else "",
+        "most_raced_car": most_car,
+        "most_raced_count": most_count,
+        "cars": cars,
         "years": years,
     }
 
