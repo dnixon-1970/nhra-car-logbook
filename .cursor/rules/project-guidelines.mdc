@@ -1,0 +1,20 @@
+---
+description: Core operating guidelines for the car logbook prototype
+alwaysApply: true
+---
+
+# Project Guidelines
+
+Refer to `AGENTS.md` and [`Documents/plans/20260924_project-setup.plan.md`](../../Documents/plans/20260924_project-setup.plan.md). Org-wide Concrete rules in `~/git/services/ai-env/.cursor/rules/*.mdc` are the assumed baseline.
+
+- **NEVER** modify files outside this repo without asking first. Marketing, Slack Integration Test, Unity, and the balancing repo are read-only. (Rule 1.)
+- Be explicit about substantive changes to AGENTS.md, the active plan, the GUID join, and the page contract. (Rule 2.)
+- Keep `Documents/todo.md` updated. (Rule 3.)
+- `Experiments/` and `data/` are gitignored scratch. Durable work lands in `tools/`, `logbook/`, `Documents/`, and `Knowledge Packs/`. (Rule 4.)
+- Always use Python for ET, RT, and mph math. (Rule 5.)
+- Git safety: never `git clean`, `git checkout --orphan`, or anything that wipes untracked files. (Rule 6.)
+- Prototype-then-promote for AGENTS.md, the plan, the telemetry join, and the theme. (Rule 7.)
+- Cross-model review: Cursor Grok authors; Claude Fable then Claude Opus 4.7 review. (Rule 8.)
+- Never invent drivers, sponsors, liveries, or records. Telemetry strings only. Brand pack wins over decoration. (Rule 9.)
+- Slack is read-only via `tools/slack_read.py` and the existing Slack Integration Test bot token. Do not commit the token. Do not post. (Rule 10.)
+- The lookup id is the Concrete Device ID (`user_id` in `nhra-64ac5`), not a Firebase Auth uid. (Rule 11.)

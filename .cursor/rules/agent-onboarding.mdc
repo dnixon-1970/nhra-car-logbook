@@ -1,0 +1,36 @@
+---
+description: Onboarding checklist for new agent sessions on the car logbook
+alwaysApply: true
+---
+
+# Agent Onboarding — First Steps for Every New Session
+
+When starting a new conversation in this repo, complete these steps **before** doing any other work.
+
+## 1. Read `AGENTS.md`
+
+This workspace is a local proof of concept: Concrete Device ID → race history → one car → themed HTML logbook.
+
+## 2. Read the active plan
+
+Read [`Documents/plans/20260924_project-setup.plan.md`](../../Documents/plans/20260924_project-setup.plan.md).
+
+## 3. Check `Documents/todo.md`
+
+## 4. Sister-repo context
+
+All **read-only** unless the user scopes a dedicated PR session:
+
+- `~/Cursor Projects/Project Startup Best Practices/`
+- `~/Cursor Projects/NHRA Marketing/` — brand and guardrails
+- `~/Cursor Projects/Slack Integratation Test/` — bot token for read-only Slack
+- `~/git/unity/apps/nhra/` — analytics event fields
+- `~/git/services/ai-env/`
+
+## 5. Phase status
+
+Local server only. No Jira ID. No git repo required yet. Do not deploy, do not post to Slack, and do not invent car history.
+
+## Then proceed
+
+Once you have this context, complete the onboarding silently (don't narrate each step) and address the user's request.

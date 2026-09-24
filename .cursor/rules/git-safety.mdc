@@ -1,0 +1,27 @@
+---
+description: Prevents destructive git commands that wipe untracked files
+alwaysApply: true
+---
+
+# Git Safety — Never Destroy the Working Directory
+
+**NEVER run `git clean`, `git checkout --orphan`, or any command that removes untracked files from the main working directory.**
+
+Gitignored files (`.local-config.json`, `.venv/`, `data/`, `Experiments/`) are untracked and will be permanently destroyed by those commands.
+
+## Banned commands (in the main worktree)
+
+- `git clean` (any flags)
+- `git checkout --orphan`
+- `git reset --hard` to a commit that predates untracked work
+- `rm -rf` targeting the workspace root or broad directories
+
+## Safe alternatives
+
+- Orphan branches: `git worktree add /tmp/<name> --orphan <branch>`
+- Temporary checkouts: `git worktree add /tmp/<name> <branch>`
+- Cleaning caches: delete a specific directory (`rm -rf .pytest_cache/`), never `git clean`
+
+## Context
+
+A `git checkout --orphan` + `git clean -fd` sequence on `unity-pga-ai-assisted-balancing` on 2026-03-29 wiped gitignored files. Assume `data/` and `Experiments/` are destructible.

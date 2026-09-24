@@ -1,0 +1,14 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+*.tmp
+.local-config.json
+.cursor/mcp.json
+data/
+logbook/out/
+Experiments/*
+!Experiments/.gitkeep

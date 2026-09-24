@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SNAKE · Car Logbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,400;0,600;1,400;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="logbook.css">
+</head>
+<body style="--wash: #3d3208; --car: #c8102e; --stripe: #c8102e">
+  <div class="stage">
+    <div class="phone">
+      <div class="phone-screen">
+        <main>
+        <header class="mast">
+          <p class="brand">NHRA LEGENDS · CAR LOGBOOK</p>
+          <p class="eyebrow"><span>LEVEL 13</span><span>167 RACES</span><span>59% WINS</span></p>
+          
+    <label class="title-picker">
+      <span class="sr">Car</span>
+      <select class="car-title" onchange="if (this.value) location.href = this.value">
+        <option value="Vehicle_SoxMartin.html">SOXMARTIN</option><option value="Vehicle_RickDobbertin1986.html">RICKDOBBERTIN1986</option><option value="Vehicle_BobRiggle1966.html">BOBRIGGLE1966</option><option value="Vehicle_Muldowney1977.html">MULDOWNEY1977</option><option value="Vehicle_JasmineSalinas2026.html">JASMINESALINAS2026</option><option value="Vehicle_CaliforniaCharger.html">CALIFORNIACHARGER</option><option value="Vehicle_Pedregon2014.html">PEDREGON2014</option><option value="Vehicle_WarrenJohnson1992.html">WARRENJOHNSON1992</option><option value="Vehicle_Snake.html" selected>SNAKE</option><option value="Vehicle_RonnieSox1968.html">RONNIESOX1968</option><option value="Vehicle_SwindlerA.html">SWINDLERA</option><option value="Vehicle_WarrenJohnson1997.html">WARRENJOHNSON1997</option><option value="Vehicle_WingedExpress.html">WINGEDEXPRESS</option><option value="Vehicle_AustinProck2025.html">AUSTINPROCK2025</option><option value="Vehicle_JimmyTaylor2025.html">JIMMYTAYLOR2025</option><option value="Vehicle_BobGlidden1972.html">BOBGLIDDEN1972</option><option value="Vehicle_DallasGlenn2025.html">DALLASGLENN2025</option><option value="Vehicle_PlanA.html">PLANA</option><option value="Vehicle_DallasGlenn2026.html">DALLASGLENN2026</option><option value="Vehicle_Reher.html">REHER</option><option value="Vehicle_EricLatino2026Camaro.html">ERICLATINO2026CAMARO</option>
+      </select>
+    </label>
+    
+        </header>
+        
+    <section class="trend">
+      <label class="metric-picker">
+        <span>Daily average</span>
+        <select id="trend-metric" onchange="showTrend(this.value)">
+          <option value="et" selected>ET</option><option value="rt">RT</option><option value="sixty">60-FT</option><option value="three30">330-FT</option><option value="mph">MPH</option><option value="win">WIN %</option>
+        </select>
+      </label>
+      <p id="trend-empty" class="trend-empty" hidden>No times for this metric.</p>
+      
+    <svg id="trend-chart" class="trend-chart" viewBox="0 0 720 260" role="img">
+      <line x1="72" y1="16" x2="72" y2="224" stroke="#a2938d" stroke-width="1"/>
+      <line x1="72" y1="224" x2="704" y2="224" stroke="#a2938d" stroke-width="1"/>
+      <text id="trend-high" x="64" y="26" text-anchor="end">5.449</text>
+      <text id="trend-low" x="64" y="224" text-anchor="end">5.304</text>
+      <text id="trend-tick-0" x="72.0" y="252" text-anchor="start">09-20</text><text id="trend-tick-1" x="282.7" y="252" text-anchor="middle">09-21</text><text id="trend-tick-2" x="493.3" y="252" text-anchor="middle">09-22</text><text id="trend-tick-3" x="493.3" y="252" text-anchor="middle">09-22</text><text id="trend-tick-4" x="704.0" y="252" text-anchor="end">09-23</text>
+      <polyline id="trend-line" points="72.0,16.0 282.7,224.0 493.3,118.2 704.0,194.2" fill="none" stroke="var(--stripe)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle id="trend-dot" cx="72.0" cy="16.0" r="4" fill="var(--stripe)" display="none"/>
+    </svg>
+    
+    </section>
+    <script id="trend-series" type="application/json">{"et": {"digits": 3, "ticks": [{"day": "2026-09-20", "x": 0.0}, {"day": "2026-09-21", "x": 0.3333333333333333}, {"day": "2026-09-22", "x": 0.6666666666666666}, {"day": "2026-09-22", "x": 0.6666666666666666}, {"day": "2026-09-23", "x": 1.0}], "points": [{"day": "2026-09-20", "value": 5.449181747436524, "x": 0.0}, {"day": "2026-09-21", "value": 5.304169696310292, "x": 0.3333333333333333}, {"day": "2026-09-22", "value": 5.3779296875, "x": 0.6666666666666666}, {"day": "2026-09-23", "value": 5.324959309895833, "x": 1.0}]}, "rt": {"digits": 3, "ticks": [{"day": "2026-09-20", "x": 0.0}, {"day": "2026-09-21", "x": 0.3333333333333333}, {"day": "2026-09-22", "x": 0.6666666666666666}, {"day": "2026-09-22", "x": 0.6666666666666666}, {"day": "2026-09-23", "x": 1.0}], "points": [{"day": "2026-09-20", "value": 0.2129548114279042, "x": 0.0}, {"day": "2026-09-21", "value": 0.21768162614208156, "x": 0.3333333333333333}, {"day": "2026-09-22", "value": 0.078125, "x": 0.6666666666666666}, {"day": "2026-09-23", "value": 0.1262232462565104, "x": 1.0}]}, "sixty": {"digits": 3, "ticks": [{"day": "2026-09-20", "x": 0.0}, {"day": "2026-09-21", "x": 0.3333333333333333}, {"day": "2026-09-22", "x": 0.6666666666666666}, {"day": "2026-09-22", "x": 0.6666666666666666}, {"day": "2026-09-23", "x": 1.0}], "points": [{"day": "2026-09-20", "value": 1.2618547439575196, "x": 0.0}, {"day": "2026-09-21", "value": 1.2410428696784421, "x": 0.3333333333333333}, {"day": "2026-09-22", "value": 1.2291666666666667, "x": 0.6666666666666666}, {"day": "2026-09-23", "value": 1.2459228515625, "x": 1.0}]}, "three30": {"digits": 3, "ticks": [{"day": "2026-09-20", "x": 0.0}, {"day": "2026-09-21", "x": 0.3333333333333333}, {"day": "2026-09-22", "x": 0.6666666666666666}, {"day": "2026-09-22", "x": 0.6666666666666666}, {"day": "2026-09-23", "x": 1.0}], "points": [{"day": "2026-09-20", "value": 3.01096248626709, "x": 0.0}, {"day": "2026-09-21", "value": 2.932169264641361, "x": 0.3333333333333333}, {"day": "2026-09-22", "value": 2.96875, "x": 0.6666666666666666}, {"day": "2026-09-23", "value": 2.96474609375, "x": 1.0}]}, "mph": {"digits": 1, "ticks": [{"day": "2026-09-20", "x": 0.0}, {"day": "2026-09-21", "x": 0.3333333333333333}, {"day": "2026-09-22", "x": 0.6666666666666666}, {"day": "2026-09-22", "x": 0.6666666666666666}, {"day": "2026-09-23", "x": 1.0}], "points": [{"day": "2026-09-20", "value": 252.46937499999999, "x": 0.0}, {"day": "2026-09-21", "value": 259.5369565217391, "x": 0.3333333333333333}, {"day": "2026-09-22", "value": 244.17333333333332, "x": 0.6666666666666666}, {"day": "2026-09-23", "value": 252.76933333333332, "x": 1.0}]}, "win": {"digits": 0, "ticks": [{"day": "2026-09-20", "x": 0.0}, {"day": "2026-09-21", "x": 0.3333333333333333}, {"day": "2026-09-22", "x": 0.6666666666666666}, {"day": "2026-09-22", "x": 0.6666666666666666}, {"day": "2026-09-23", "x": 1.0}], "points": [{"day": "2026-09-20", "value": 59.42028985507246, "x": 0.0}, {"day": "2026-09-21", "value": 54.23728813559322, "x": 0.3333333333333333}, {"day": "2026-09-22", "value": 66.66666666666667, "x": 0.6666666666666666}, {"day": "2026-09-23", "value": 75.0, "x": 1.0}]}}</script>
+    <script>
+      function showTrend(name) {
+        var series = JSON.parse(document.getElementById("trend-series").textContent)[name];
+        var chart = document.getElementById("trend-chart");
+        var empty = document.getElementById("trend-empty");
+        var points = series.points;
+        if (!points.length) {
+          chart.hidden = true;
+          empty.hidden = false;
+          return;
+        }
+        chart.hidden = false;
+        empty.hidden = true;
+        var width = 720, height = 260, left = 72, right = 16, top = 16, bottom = 36;
+        var low = points[0].value, high = points[0].value;
+        points.forEach(function (point) {
+          if (point.value < low) low = point.value;
+          if (point.value > high) high = point.value;
+        });
+        if (high === low) { low -= 0.05; high += 0.05; }
+        var span = high - low;
+        var plotW = width - left - right;
+        var plotH = height - top - bottom;
+        var coords = points.map(function (point) {
+          var x = left + point.x * plotW;
+          var y = top + (1 - ((point.value - low) / span)) * plotH;
+          return x.toFixed(1) + "," + y.toFixed(1);
+        });
+        document.getElementById("trend-line").setAttribute("points", coords.join(" "));
+        var dot = document.getElementById("trend-dot");
+        if (points.length === 1) {
+          var pair = coords[0].split(",");
+          dot.setAttribute("cx", pair[0]);
+          dot.setAttribute("cy", pair[1]);
+          dot.removeAttribute("display");
+        } else {
+          dot.setAttribute("display", "none");
+        }
+        var digits = series.digits;
+        document.getElementById("trend-high").textContent = high.toFixed(digits);
+        document.getElementById("trend-low").textContent = low.toFixed(digits);
+        series.ticks.forEach(function (tick, index) {
+          var node = document.getElementById("trend-tick-" + index);
+          if (!node) return;
+          node.textContent = tick.day.slice(5);
+          node.setAttribute("x", (left + tick.x * plotW).toFixed(1));
+        });
+      }
+      showTrend("et");
+    </script>
+    
+        <section class="chief">
+          <h2>Tips from your crew chief</h2>
+          <p>84 wins and 59 losses. Best ET is 4.768. The average is 0.609 behind that number.</p>
+        </section>
+        <details class="sheet" id="raw-data">
+          <summary>Raw Data</summary>
+          <table>
+            <thead>
+              <tr>
+                <th>When</th><th>Event</th><th>RT</th><th>60</th><th>330</th><th>ET</th><th>MPH</th><th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+    <tr id="row-0">
+      <td>2026-09-23 20:53 UTC</td>
+      <td>ShowMatch</td>
+      <td>0.116</td>
+      <td>1.264</td>
+      <td>2.968</td>
+      <td class="et">5.273</td>
+      <td>261.0</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-1">
+      <td>2026-09-23 20:53 UTC</td>
+      <td>ChanceEncounter</td>
+      <td>0.017</td>
+      <td>1.208</td>
+      <td>2.915</td>
+      <td class="et">5.135</td>
+      <td>258.5</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-2">
+      <td>2026-09-23 20:52 UTC</td>
+      <td>ShowMatch</td>
+      <td>0.134</td>
+      <td>1.200</td>
+      <td>2.899</td>
+      <td class="et">5.222</td>
+      <td>260.8</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-3">
+      <td>2026-09-23 20:52 UTC</td>
+      <td>ShowMatch</td>
+      <td>—</td>
+      <td>1.206</td>
+      <td>2.905</td>
+      <td class="et">5.088</td>
+      <td>260.7</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-4">
+      <td>2026-09-23 20:52 UTC</td>
+      <td colspan="7">Swap Drivetrain to Drivetrain_Polaris1</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-5">
+      <td>2026-09-23 20:52 UTC</td>
+      <td colspan="7">Swap Drivetrain: Drivetrain_Fury to Drivetrain_Polaris</td>
+    </tr>
+    
+
+    <tr id="row-6">
+      <td>2026-09-23 20:51 UTC</td>
+      <td>ShowMatch</td>
+      <td>0.417</td>
+      <td>1.272</td>
+      <td>3.035</td>
+      <td class="et">5.925</td>
+      <td>228.4</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-7">
+      <td>2026-09-23 20:50 UTC</td>
+      <td>ShowMatch</td>
+      <td>0.067</td>
+      <td>1.260</td>
+      <td>2.932</td>
+      <td class="et">5.159</td>
+      <td>262.3</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-8">
+      <td>2026-09-23 05:39 UTC</td>
+      <td>ShowMatch</td>
+      <td>0.067</td>
+      <td>1.188</td>
+      <td>2.900</td>
+      <td class="et">5.184</td>
+      <td>256.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-9">
+      <td>2026-09-23 05:39 UTC</td>
+      <td>ShowMatch</td>
+      <td>0.049</td>
+      <td>1.191</td>
+      <td>2.881</td>
+      <td class="et">5.108</td>
+      <td>261.3</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-10">
+      <td>2026-09-23 05:38 UTC</td>
+      <td>ShowMatch</td>
+      <td>0.017</td>
+      <td>1.337</td>
+      <td>3.119</td>
+      <td class="et">5.719</td>
+      <td>219.4</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-11">
+      <td>2026-09-23 05:38 UTC</td>
+      <td>ShowMatch</td>
+      <td>0.100</td>
+      <td>1.270</td>
+      <td>2.949</td>
+      <td class="et">5.206</td>
+      <td>262.6</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-12">
+      <td>2026-09-23 05:37 UTC</td>
+      <td>ShowMatch</td>
+      <td>—</td>
+      <td>1.229</td>
+      <td>2.900</td>
+      <td class="et">5.074</td>
+      <td>260.9</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-13">
+      <td>2026-09-23 05:37 UTC</td>
+      <td>ShowMatch</td>
+      <td>0.200</td>
+      <td>1.150</td>
+      <td>2.807</td>
+      <td class="et">5.146</td>
+      <td>264.6</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-14">
+      <td>2026-09-23 05:37 UTC</td>
+      <td>ShowMatch</td>
+      <td>0.216</td>
+      <td>1.367</td>
+      <td>3.229</td>
+      <td class="et">5.875</td>
+      <td>237.8</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-15">
+      <td>2026-09-23 05:36 UTC</td>
+      <td>ShowMatch</td>
+      <td>0.116</td>
+      <td>1.215</td>
+      <td>2.881</td>
+      <td class="et">5.138</td>
+      <td>264.5</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-16">
+      <td>2026-09-23 05:36 UTC</td>
+      <td>ShowMatch</td>
+      <td>—</td>
+      <td>1.332</td>
+      <td>3.152</td>
+      <td class="et">5.623</td>
+      <td>231.9</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-17">
+      <td>2026-09-23 05:36 UTC</td>
+      <td colspan="7">Upgrade EngineBlock to level 9</td>
+    </tr>
+    
+
+    <tr id="row-18">
+      <td>2026-09-22 00:16 UTC</td>
+      <td>ChanceEncounter</td>
+      <td>0.032</td>
+      <td>1.147</td>
+      <td>2.811</td>
+      <td class="et">4.984</td>
+      <td>264.8</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-19">
+      <td>2026-09-22 00:14 UTC</td>
+      <td>TicketQualifier</td>
+      <td>0.085</td>
+      <td>1.209</td>
+      <td>2.997</td>
+      <td class="et">5.511</td>
+      <td>231.8</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-20">
+      <td>2026-09-22 00:13 UTC</td>
+      <td>ShowMatch</td>
+      <td>0.117</td>
+      <td>1.331</td>
+      <td>3.099</td>
+      <td class="et">5.639</td>
+      <td>235.9</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-21">
+      <td>2026-09-21 18:03 UTC</td>
+      <td>TestTune</td>
+      <td>0.083</td>
+      <td>1.185</td>
+      <td>2.865</td>
+      <td class="et">5.115</td>
+      <td>262.4</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-22">
+      <td>2026-09-21 18:03 UTC</td>
+      <td>TestTune</td>
+      <td>0.183</td>
+      <td>1.161</td>
+      <td>2.834</td>
+      <td class="et">5.182</td>
+      <td>260.5</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-23">
+      <td>2026-09-21 18:02 UTC</td>
+      <td>TestTune</td>
+      <td>—</td>
+      <td>1.156</td>
+      <td>2.820</td>
+      <td class="et">4.972</td>
+      <td>264.3</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-24">
+      <td>2026-09-21 17:23 UTC</td>
+      <td>ChanceEncounter</td>
+      <td>0.017</td>
+      <td>1.227</td>
+      <td>2.915</td>
+      <td class="et">5.111</td>
+      <td>256.1</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-25">
+      <td>2026-09-21 17:23 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.050</td>
+      <td>1.260</td>
+      <td>2.937</td>
+      <td class="et">5.140</td>
+      <td>263.8</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-26">
+      <td>2026-09-21 17:22 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.067</td>
+      <td>1.222</td>
+      <td>2.890</td>
+      <td class="et">5.101</td>
+      <td>264.4</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-27">
+      <td>2026-09-21 17:22 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.100</td>
+      <td>1.222</td>
+      <td>2.890</td>
+      <td class="et">5.145</td>
+      <td>263.6</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-28">
+      <td>2026-09-21 17:22 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.200</td>
+      <td>1.228</td>
+      <td>2.902</td>
+      <td class="et">5.271</td>
+      <td>260.7</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-29">
+      <td>2026-09-21 17:21 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>—</td>
+      <td>1.421</td>
+      <td>3.264</td>
+      <td class="et">5.629</td>
+      <td>237.7</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-30">
+      <td>2026-09-21 17:21 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.050</td>
+      <td>1.170</td>
+      <td>2.834</td>
+      <td class="et">5.036</td>
+      <td>264.5</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-31">
+      <td>2026-09-21 17:21 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.150</td>
+      <td>1.285</td>
+      <td>2.961</td>
+      <td class="et">5.271</td>
+      <td>263.4</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-32">
+      <td>2026-09-21 17:20 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.101</td>
+      <td>1.170</td>
+      <td>2.836</td>
+      <td class="et">5.078</td>
+      <td>264.5</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-33">
+      <td>2026-09-21 17:20 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.051</td>
+      <td>1.238</td>
+      <td>2.908</td>
+      <td class="et">5.104</td>
+      <td>264.5</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-34">
+      <td>2026-09-21 17:20 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.150</td>
+      <td>1.252</td>
+      <td>2.929</td>
+      <td class="et">5.246</td>
+      <td>261.5</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-35">
+      <td>2026-09-21 17:19 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.367</td>
+      <td>1.159</td>
+      <td>2.817</td>
+      <td class="et">5.329</td>
+      <td>264.7</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-36">
+      <td>2026-09-21 17:19 UTC</td>
+      <td colspan="7">Car level 12 to 13</td>
+    </tr>
+    
+
+    <tr id="row-37">
+      <td>2026-09-21 17:18 UTC</td>
+      <td>TestTune</td>
+      <td>0.033</td>
+      <td>1.296</td>
+      <td>2.970</td>
+      <td class="et">5.152</td>
+      <td>264.4</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-38">
+      <td>2026-09-21 17:18 UTC</td>
+      <td>TestTune</td>
+      <td>0.100</td>
+      <td>1.182</td>
+      <td>2.849</td>
+      <td class="et">5.093</td>
+      <td>264.4</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-39">
+      <td>2026-09-21 16:56 UTC</td>
+      <td>UpgradeBracket</td>
+      <td>0.133</td>
+      <td>1.207</td>
+      <td>2.877</td>
+      <td class="et">5.167</td>
+      <td>264.2</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-40">
+      <td>2026-09-21 16:55 UTC</td>
+      <td>UpgradeBracket</td>
+      <td>0.099</td>
+      <td>1.205</td>
+      <td>2.873</td>
+      <td class="et">5.125</td>
+      <td>263.7</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-41">
+      <td>2026-09-21 16:55 UTC</td>
+      <td>UpgradeBracket</td>
+      <td>0.216</td>
+      <td>1.226</td>
+      <td>2.896</td>
+      <td class="et">5.262</td>
+      <td>263.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-42">
+      <td>2026-09-21 16:48 UTC</td>
+      <td>TestTune</td>
+      <td>0.183</td>
+      <td>1.175</td>
+      <td>2.846</td>
+      <td class="et">5.194</td>
+      <td>260.8</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-43">
+      <td>2026-09-21 16:47 UTC</td>
+      <td>TestTune</td>
+      <td>—</td>
+      <td>1.219</td>
+      <td>2.889</td>
+      <td class="et">5.044</td>
+      <td>263.8</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-44">
+      <td>2026-09-21 16:08 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.421</td>
+      <td>1.215</td>
+      <td>2.884</td>
+      <td class="et">5.451</td>
+      <td>264.7</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-45">
+      <td>2026-09-21 16:07 UTC</td>
+      <td>TestTune</td>
+      <td>0.133</td>
+      <td>1.290</td>
+      <td>2.963</td>
+      <td class="et">5.256</td>
+      <td>261.1</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-46">
+      <td>2026-09-21 16:07 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.117</td>
+      <td>1.343</td>
+      <td>3.020</td>
+      <td class="et">5.297</td>
+      <td>264.3</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-47">
+      <td>2026-09-21 16:07 UTC</td>
+      <td colspan="7">Car level 11 to 12</td>
+    </tr>
+    
+
+    <tr id="row-48">
+      <td>2026-09-21 15:17 UTC</td>
+      <td>TestTune</td>
+      <td>0.033</td>
+      <td>1.314</td>
+      <td>3.041</td>
+      <td class="et">5.296</td>
+      <td>256.7</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-49">
+      <td>2026-09-21 15:16 UTC</td>
+      <td>TestTune</td>
+      <td>0.316</td>
+      <td>1.228</td>
+      <td>2.927</td>
+      <td class="et">5.432</td>
+      <td>255.7</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-50">
+      <td>2026-09-21 15:16 UTC</td>
+      <td>TestTune</td>
+      <td>—</td>
+      <td>1.461</td>
+      <td>3.237</td>
+      <td class="et">5.513</td>
+      <td>247.4</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-51">
+      <td>2026-09-21 15:10 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.449</td>
+      <td>1.172</td>
+      <td>2.832</td>
+      <td class="et">5.418</td>
+      <td>266.1</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-52">
+      <td>2026-09-21 15:10 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.399</td>
+      <td>1.184</td>
+      <td>2.837</td>
+      <td class="et">5.357</td>
+      <td>268.2</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-53">
+      <td>2026-09-21 15:09 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>3.745</td>
+      <td>1.970</td>
+      <td>3.879</td>
+      <td class="et">9.806</td>
+      <td>266.1</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-54">
+      <td>2026-09-21 15:09 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.083</td>
+      <td>1.235</td>
+      <td>2.879</td>
+      <td class="et">5.078</td>
+      <td>269.5</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-55">
+      <td>2026-09-21 15:09 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.417</td>
+      <td>1.167</td>
+      <td>2.806</td>
+      <td class="et">5.319</td>
+      <td>270.2</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-56">
+      <td>2026-09-21 15:08 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.083</td>
+      <td>1.229</td>
+      <td>2.975</td>
+      <td class="et">5.425</td>
+      <td>237.5</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-57">
+      <td>2026-09-21 14:45 UTC</td>
+      <td>TestTune</td>
+      <td>0.083</td>
+      <td>1.162</td>
+      <td>2.828</td>
+      <td class="et">5.060</td>
+      <td>264.4</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-58">
+      <td>2026-09-21 10:26 UTC</td>
+      <td>TestTune</td>
+      <td>0.067</td>
+      <td>1.232</td>
+      <td>2.925</td>
+      <td class="et">5.175</td>
+      <td>260.1</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-59">
+      <td>2026-09-21 10:08 UTC</td>
+      <td>ChanceEncounter</td>
+      <td>0.017</td>
+      <td>1.214</td>
+      <td>2.928</td>
+      <td class="et">5.173</td>
+      <td>254.4</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-60">
+      <td>2026-09-21 09:42 UTC</td>
+      <td>TestTune</td>
+      <td>0.066</td>
+      <td>1.271</td>
+      <td>3.041</td>
+      <td class="et">5.407</td>
+      <td>248.3</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-61">
+      <td>2026-09-21 09:41 UTC</td>
+      <td>TestTune</td>
+      <td>0.134</td>
+      <td>1.356</td>
+      <td>3.083</td>
+      <td class="et">5.448</td>
+      <td>252.4</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-62">
+      <td>2026-09-21 09:41 UTC</td>
+      <td>TestTune</td>
+      <td>0.183</td>
+      <td>1.415</td>
+      <td>3.128</td>
+      <td class="et">5.514</td>
+      <td>248.5</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-63">
+      <td>2026-09-21 09:40 UTC</td>
+      <td>TestTune</td>
+      <td>0.366</td>
+      <td>1.186</td>
+      <td>2.872</td>
+      <td class="et">5.471</td>
+      <td>252.1</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-64">
+      <td>2026-09-21 08:58 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.117</td>
+      <td>1.304</td>
+      <td>3.083</td>
+      <td class="et">5.510</td>
+      <td>246.0</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-65">
+      <td>2026-09-21 08:57 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.150</td>
+      <td>1.211</td>
+      <td>2.906</td>
+      <td class="et">5.250</td>
+      <td>255.0</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-66">
+      <td>2026-09-21 08:57 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.216</td>
+      <td>1.211</td>
+      <td>2.927</td>
+      <td class="et">5.362</td>
+      <td>256.3</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-67">
+      <td>2026-09-21 08:57 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.133</td>
+      <td>1.270</td>
+      <td>2.953</td>
+      <td class="et">5.256</td>
+      <td>261.7</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-68">
+      <td>2026-09-21 08:56 UTC</td>
+      <td>TestTune</td>
+      <td>0.050</td>
+      <td>1.182</td>
+      <td>2.850</td>
+      <td class="et">5.048</td>
+      <td>264.0</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-69">
+      <td>2026-09-21 08:54 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.099</td>
+      <td>1.319</td>
+      <td>2.996</td>
+      <td class="et">5.258</td>
+      <td>263.7</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-70">
+      <td>2026-09-21 08:53 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.017</td>
+      <td>1.164</td>
+      <td>2.831</td>
+      <td class="et">4.995</td>
+      <td>263.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-71">
+      <td>2026-09-21 08:53 UTC</td>
+      <td>UpgradeBracket</td>
+      <td>0.033</td>
+      <td>1.193</td>
+      <td>2.955</td>
+      <td class="et">5.475</td>
+      <td>226.3</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-72">
+      <td>2026-09-21 08:52 UTC</td>
+      <td>UpgradeBracket</td>
+      <td>0.117</td>
+      <td>1.242</td>
+      <td>2.916</td>
+      <td class="et">5.188</td>
+      <td>262.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-73">
+      <td>2026-09-21 08:10 UTC</td>
+      <td>TestTune</td>
+      <td>0.083</td>
+      <td>1.189</td>
+      <td>2.854</td>
+      <td class="et">5.081</td>
+      <td>264.3</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-74">
+      <td>2026-09-21 05:05 UTC</td>
+      <td>TicketQualifier</td>
+      <td>0.116</td>
+      <td>1.225</td>
+      <td>2.902</td>
+      <td class="et">5.187</td>
+      <td>260.1</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-75">
+      <td>2026-09-21 03:02 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>—</td>
+      <td>1.221</td>
+      <td>2.972</td>
+      <td class="et">5.244</td>
+      <td>250.6</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-76">
+      <td>2026-09-21 03:01 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.049</td>
+      <td>1.267</td>
+      <td>2.949</td>
+      <td class="et">5.161</td>
+      <td>262.2</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-77">
+      <td>2026-09-21 03:01 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.616</td>
+      <td>1.233</td>
+      <td>2.956</td>
+      <td class="et">5.794</td>
+      <td>254.8</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-78">
+      <td>2026-09-21 03:01 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.766</td>
+      <td>1.188</td>
+      <td>2.880</td>
+      <td class="et">5.832</td>
+      <td>259.8</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-79">
+      <td>2026-09-21 03:00 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>—</td>
+      <td>1.255</td>
+      <td>2.933</td>
+      <td class="et">5.131</td>
+      <td>262.5</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-80">
+      <td>2026-09-21 03:00 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>—</td>
+      <td>0.958</td>
+      <td>2.689</td>
+      <td class="et">5.109</td>
+      <td>230.4</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-81">
+      <td>2026-09-21 02:59 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.133</td>
+      <td>1.278</td>
+      <td>2.956</td>
+      <td class="et">5.256</td>
+      <td>260.8</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-82">
+      <td>2026-09-21 02:59 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.083</td>
+      <td>1.171</td>
+      <td>2.844</td>
+      <td class="et">5.090</td>
+      <td>261.5</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-83">
+      <td>2026-09-21 02:59 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>—</td>
+      <td>1.221</td>
+      <td>2.891</td>
+      <td class="et">5.046</td>
+      <td>264.2</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-84">
+      <td>2026-09-21 02:59 UTC</td>
+      <td colspan="7">Car level 10 to 11</td>
+    </tr>
+    
+
+    <tr id="row-85">
+      <td>2026-09-21 02:58 UTC</td>
+      <td>TestTune</td>
+      <td>0.066</td>
+      <td>1.224</td>
+      <td>2.895</td>
+      <td class="et">5.118</td>
+      <td>263.6</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-86">
+      <td>2026-09-21 02:20 UTC</td>
+      <td>TestTune</td>
+      <td>0.067</td>
+      <td>1.184</td>
+      <td>2.855</td>
+      <td class="et">5.084</td>
+      <td>262.0</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-87">
+      <td>2026-09-21 01:38 UTC</td>
+      <td>TestTune</td>
+      <td>0.033</td>
+      <td>1.132</td>
+      <td>2.797</td>
+      <td class="et">4.981</td>
+      <td>263.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-88">
+      <td>2026-09-21 01:37 UTC</td>
+      <td>TestTune</td>
+      <td>—</td>
+      <td>1.062</td>
+      <td>2.721</td>
+      <td class="et">4.869</td>
+      <td>264.0</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-89">
+      <td>2026-09-21 01:03 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.083</td>
+      <td>1.369</td>
+      <td>3.052</td>
+      <td class="et">5.291</td>
+      <td>263.4</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-90">
+      <td>2026-09-21 00:49 UTC</td>
+      <td>UpgradeBracket</td>
+      <td>0.266</td>
+      <td>1.339</td>
+      <td>3.020</td>
+      <td class="et">5.445</td>
+      <td>264.1</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-91">
+      <td>2026-09-21 00:49 UTC</td>
+      <td>UpgradeBracket</td>
+      <td>—</td>
+      <td>1.182</td>
+      <td>2.850</td>
+      <td class="et">5.007</td>
+      <td>263.4</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-92">
+      <td>2026-09-21 00:21 UTC</td>
+      <td>TestTune</td>
+      <td>0.105</td>
+      <td>1.323</td>
+      <td>3.002</td>
+      <td class="et">5.262</td>
+      <td>263.3</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-93">
+      <td>2026-09-20 23:19 UTC</td>
+      <td>TestTune</td>
+      <td>0.283</td>
+      <td>1.255</td>
+      <td>3.049</td>
+      <td class="et">5.661</td>
+      <td>243.8</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-94">
+      <td>2026-09-20 23:19 UTC</td>
+      <td>TestTune</td>
+      <td>0.116</td>
+      <td>1.259</td>
+      <td>3.012</td>
+      <td class="et">5.395</td>
+      <td>250.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-95">
+      <td>2026-09-20 23:18 UTC</td>
+      <td>TestTune</td>
+      <td>0.050</td>
+      <td>1.209</td>
+      <td>2.936</td>
+      <td class="et">5.211</td>
+      <td>254.2</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-96">
+      <td>2026-09-20 23:18 UTC</td>
+      <td>TestTune</td>
+      <td>—</td>
+      <td>1.186</td>
+      <td>2.886</td>
+      <td class="et">5.073</td>
+      <td>258.7</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-97">
+      <td>2026-09-20 22:49 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.283</td>
+      <td>1.230</td>
+      <td>2.960</td>
+      <td class="et">5.484</td>
+      <td>253.5</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-98">
+      <td>2026-09-20 22:48 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>—</td>
+      <td>1.296</td>
+      <td>3.014</td>
+      <td class="et">5.229</td>
+      <td>256.0</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-99">
+      <td>2026-09-20 22:47 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.050</td>
+      <td>1.208</td>
+      <td>2.884</td>
+      <td class="et">5.102</td>
+      <td>262.7</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-100">
+      <td>2026-09-20 22:47 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>1.165</td>
+      <td>1.301</td>
+      <td>2.989</td>
+      <td class="et">6.336</td>
+      <td>260.5</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-101">
+      <td>2026-09-20 22:46 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.017</td>
+      <td>1.333</td>
+      <td>3.017</td>
+      <td class="et">5.204</td>
+      <td>261.3</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-102">
+      <td>2026-09-20 22:45 UTC</td>
+      <td>TestTune</td>
+      <td>0.100</td>
+      <td>1.138</td>
+      <td>2.799</td>
+      <td class="et">5.044</td>
+      <td>263.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-103">
+      <td>2026-09-20 22:45 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.233</td>
+      <td>1.145</td>
+      <td>2.806</td>
+      <td class="et">5.195</td>
+      <td>264.6</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-104">
+      <td>2026-09-20 22:45 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.482</td>
+      <td>1.162</td>
+      <td>2.822</td>
+      <td class="et">5.454</td>
+      <td>263.9</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-105">
+      <td>2026-09-20 22:45 UTC</td>
+      <td colspan="7">Car level 9 to 10</td>
+    </tr>
+    
+
+    <tr id="row-106">
+      <td>2026-09-20 22:10 UTC</td>
+      <td>TestTune</td>
+      <td>0.083</td>
+      <td>1.226</td>
+      <td>2.897</td>
+      <td class="et">5.139</td>
+      <td>263.6</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-107">
+      <td>2026-09-20 21:19 UTC</td>
+      <td>TestTune</td>
+      <td>0.066</td>
+      <td>1.150</td>
+      <td>2.818</td>
+      <td class="et">5.032</td>
+      <td>263.6</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-108">
+      <td>2026-09-20 20:44 UTC</td>
+      <td>TestTune</td>
+      <td>0.167</td>
+      <td>1.227</td>
+      <td>2.900</td>
+      <td class="et">5.218</td>
+      <td>264.4</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-109">
+      <td>2026-09-20 20:44 UTC</td>
+      <td colspan="7">Car level 8 to 9</td>
+    </tr>
+    
+
+    <tr id="row-110">
+      <td>2026-09-20 20:08 UTC</td>
+      <td>TestTune</td>
+      <td>0.249</td>
+      <td>1.221</td>
+      <td>2.894</td>
+      <td class="et">5.303</td>
+      <td>263.4</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-111">
+      <td>2026-09-20 18:57 UTC</td>
+      <td>TestTune</td>
+      <td>0.200</td>
+      <td>1.178</td>
+      <td>2.848</td>
+      <td class="et">5.208</td>
+      <td>262.5</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-112">
+      <td>2026-09-20 18:02 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.200</td>
+      <td>1.218</td>
+      <td>2.951</td>
+      <td class="et">5.395</td>
+      <td>253.4</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-113">
+      <td>2026-09-20 18:02 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.166</td>
+      <td>1.293</td>
+      <td>3.124</td>
+      <td class="et">5.666</td>
+      <td>238.9</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-114">
+      <td>2026-09-20 18:02 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.083</td>
+      <td>1.217</td>
+      <td>2.920</td>
+      <td class="et">5.209</td>
+      <td>258.8</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-115">
+      <td>2026-09-20 17:54 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.167</td>
+      <td>1.164</td>
+      <td>2.861</td>
+      <td class="et">5.221</td>
+      <td>259.6</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-116">
+      <td>2026-09-20 17:53 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.682</td>
+      <td>1.191</td>
+      <td>2.856</td>
+      <td class="et">5.697</td>
+      <td>263.7</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-117">
+      <td>2026-09-20 17:53 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.016</td>
+      <td>1.209</td>
+      <td>2.891</td>
+      <td class="et">5.081</td>
+      <td>261.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-118">
+      <td>2026-09-20 17:52 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>—</td>
+      <td>1.170</td>
+      <td>2.841</td>
+      <td class="et">4.990</td>
+      <td>264.2</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-119">
+      <td>2026-09-20 17:50 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.749</td>
+      <td>1.191</td>
+      <td>2.855</td>
+      <td class="et">5.750</td>
+      <td>263.7</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-120">
+      <td>2026-09-20 17:49 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.199</td>
+      <td>1.240</td>
+      <td>2.916</td>
+      <td class="et">5.272</td>
+      <td>263.9</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-121">
+      <td>2026-09-20 17:49 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>—</td>
+      <td>1.164</td>
+      <td>2.833</td>
+      <td class="et">4.988</td>
+      <td>262.7</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-122">
+      <td>2026-09-20 17:48 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.083</td>
+      <td>1.257</td>
+      <td>2.932</td>
+      <td class="et">5.164</td>
+      <td>263.4</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-123">
+      <td>2026-09-20 17:48 UTC</td>
+      <td>TestTune</td>
+      <td>0.100</td>
+      <td>1.220</td>
+      <td>2.892</td>
+      <td class="et">5.152</td>
+      <td>263.2</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-124">
+      <td>2026-09-20 17:46 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.133</td>
+      <td>1.310</td>
+      <td>3.026</td>
+      <td class="et">5.550</td>
+      <td>234.5</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-125">
+      <td>2026-09-20 17:17 UTC</td>
+      <td>TestTune</td>
+      <td>0.150</td>
+      <td>1.154</td>
+      <td>2.823</td>
+      <td class="et">5.132</td>
+      <td>264.1</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-126">
+      <td>2026-09-20 17:17 UTC</td>
+      <td colspan="7">Car level 7 to 8</td>
+    </tr>
+    
+
+    <tr id="row-127">
+      <td>2026-09-20 16:34 UTC</td>
+      <td>TestTune</td>
+      <td>0.150</td>
+      <td>1.164</td>
+      <td>2.833</td>
+      <td class="et">5.144</td>
+      <td>263.4</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-128">
+      <td>2026-09-20 16:34 UTC</td>
+      <td>UpgradeBracket</td>
+      <td>0.384</td>
+      <td>1.267</td>
+      <td>2.950</td>
+      <td class="et">5.489</td>
+      <td>257.1</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-129">
+      <td>2026-09-20 16:33 UTC</td>
+      <td>UpgradeBracket</td>
+      <td>0.117</td>
+      <td>1.239</td>
+      <td>2.913</td>
+      <td class="et">5.175</td>
+      <td>262.4</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-130">
+      <td>2026-09-20 16:33 UTC</td>
+      <td>UpgradeBracket</td>
+      <td>0.250</td>
+      <td>1.162</td>
+      <td>2.825</td>
+      <td class="et">5.235</td>
+      <td>264.1</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-131">
+      <td>2026-09-20 16:32 UTC</td>
+      <td>FastPass</td>
+      <td>0.034</td>
+      <td>1.157</td>
+      <td>2.826</td>
+      <td class="et">5.018</td>
+      <td>263.6</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-132">
+      <td>2026-09-20 13:55 UTC</td>
+      <td>TestTune</td>
+      <td>0.083</td>
+      <td>1.182</td>
+      <td>2.852</td>
+      <td class="et">5.100</td>
+      <td>263.4</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-133">
+      <td>2026-09-20 12:12 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.229</td>
+      <td>1.360</td>
+      <td>3.154</td>
+      <td class="et">5.846</td>
+      <td>233.9</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-134">
+      <td>2026-09-20 12:11 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.649</td>
+      <td>1.195</td>
+      <td>2.861</td>
+      <td class="et">5.670</td>
+      <td>264.1</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-135">
+      <td>2026-09-20 12:11 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.249</td>
+      <td>1.199</td>
+      <td>2.872</td>
+      <td class="et">5.279</td>
+      <td>263.1</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-136">
+      <td>2026-09-20 12:11 UTC</td>
+      <td colspan="7">Car level 6 to 7</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-137">
+      <td>2026-09-20 12:11 UTC</td>
+      <td colspan="7">Upgrade Drivetrain to level 8</td>
+    </tr>
+    
+
+    <tr id="row-138">
+      <td>2026-09-20 12:10 UTC</td>
+      <td>TestTune</td>
+      <td>0.083</td>
+      <td>1.179</td>
+      <td>2.852</td>
+      <td class="et">5.095</td>
+      <td>263.0</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-139">
+      <td>2026-09-20 12:10 UTC</td>
+      <td colspan="7">Upgrade Drivetrain_Fury to level 8</td>
+    </tr>
+    
+
+    <tr id="row-140">
+      <td>2026-09-20 12:09 UTC</td>
+      <td>MilestoneSnake_10</td>
+      <td>0.117</td>
+      <td>1.242</td>
+      <td>3.001</td>
+      <td class="et">5.393</td>
+      <td>249.8</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-141">
+      <td>2026-09-20 12:08 UTC</td>
+      <td>MilestoneSnake_9</td>
+      <td>0.017</td>
+      <td>1.258</td>
+      <td>2.983</td>
+      <td class="et">5.219</td>
+      <td>255.2</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-142">
+      <td>2026-09-20 12:07 UTC</td>
+      <td>MilestoneSnake_8</td>
+      <td>0.149</td>
+      <td>1.216</td>
+      <td>2.915</td>
+      <td class="et">5.260</td>
+      <td>259.2</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-143">
+      <td>2026-09-20 12:07 UTC</td>
+      <td>MilestoneSnake_8</td>
+      <td>0.350</td>
+      <td>1.193</td>
+      <td>2.911</td>
+      <td class="et">5.489</td>
+      <td>255.7</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-144">
+      <td>2026-09-20 12:06 UTC</td>
+      <td>MilestoneSnake_7</td>
+      <td>0.150</td>
+      <td>1.191</td>
+      <td>2.891</td>
+      <td class="et">5.233</td>
+      <td>258.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-145">
+      <td>2026-09-20 12:06 UTC</td>
+      <td>MilestoneSnake_7</td>
+      <td>0.299</td>
+      <td>1.201</td>
+      <td>2.876</td>
+      <td class="et">5.330</td>
+      <td>263.6</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-146">
+      <td>2026-09-20 12:06 UTC</td>
+      <td>MilestoneSnake_7</td>
+      <td>0.050</td>
+      <td>1.343</td>
+      <td>3.044</td>
+      <td class="et">5.269</td>
+      <td>261.0</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-147">
+      <td>2026-09-20 12:05 UTC</td>
+      <td>MilestoneSnake_7</td>
+      <td>—</td>
+      <td>0.979</td>
+      <td>2.626</td>
+      <td class="et">4.768</td>
+      <td>263.2</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-148">
+      <td>2026-09-20 12:05 UTC</td>
+      <td>MilestoneSnake_7</td>
+      <td>—</td>
+      <td>1.161</td>
+      <td>2.833</td>
+      <td class="et">4.986</td>
+      <td>263.0</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-149">
+      <td>2026-09-20 12:05 UTC</td>
+      <td colspan="7">Swap Drivetrain to Drivetrain_Fury7</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-150">
+      <td>2026-09-20 12:05 UTC</td>
+      <td colspan="7">Swap Intake to Intake_TwinFang7</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-151">
+      <td>2026-09-20 12:05 UTC</td>
+      <td colspan="7">Swap Drivetrain: Drivetrain_Gearlock to Drivetrain_Fury</td>
+    </tr>
+    
+
+    <tr id="row-152">
+      <td>2026-09-20 12:04 UTC</td>
+      <td>MilestoneSnake_7</td>
+      <td>0.283</td>
+      <td>1.261</td>
+      <td>3.018</td>
+      <td class="et">5.558</td>
+      <td>251.2</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-153">
+      <td>2026-09-20 12:04 UTC</td>
+      <td colspan="7">Swap Electronics to Electronics_FullSend8</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-154">
+      <td>2026-09-20 12:04 UTC</td>
+      <td colspan="7">Swap Electronics: Electronics_BulwarkECU to Electronics_FullSend</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-155">
+      <td>2026-09-20 12:04 UTC</td>
+      <td colspan="7">Swap Intake: Intake_Gauntlet to Intake_TwinFang</td>
+    </tr>
+    
+
+    <tr id="row-156">
+      <td>2026-09-20 12:03 UTC</td>
+      <td>MilestoneSnake_7</td>
+      <td>0.245</td>
+      <td>1.313</td>
+      <td>3.118</td>
+      <td class="et">5.687</td>
+      <td>246.0</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-157">
+      <td>2026-09-20 12:02 UTC</td>
+      <td>MilestoneSnake_7</td>
+      <td>0.146</td>
+      <td>1.285</td>
+      <td>3.093</td>
+      <td class="et">5.553</td>
+      <td>244.5</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-158">
+      <td>2026-09-20 12:02 UTC</td>
+      <td colspan="7">Swap EngineBlock to EngineBlock_Hellraiser8</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-159">
+      <td>2026-09-20 12:02 UTC</td>
+      <td colspan="7">Swap EngineBlock: EngineBlock_BastionV8 to EngineBlock_Hellraiser</td>
+    </tr>
+    
+
+    <tr id="row-160">
+      <td>2026-09-20 11:55 UTC</td>
+      <td>MilestoneSnake_7</td>
+      <td>0.117</td>
+      <td>1.355</td>
+      <td>3.196</td>
+      <td class="et">5.664</td>
+      <td>240.9</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-161">
+      <td>2026-09-20 11:54 UTC</td>
+      <td>MilestoneSnake_7</td>
+      <td>—</td>
+      <td>1.161</td>
+      <td>2.990</td>
+      <td class="et">5.342</td>
+      <td>242.2</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-162">
+      <td>2026-09-20 11:54 UTC</td>
+      <td>MilestoneSnake_7</td>
+      <td>—</td>
+      <td>1.327</td>
+      <td>3.170</td>
+      <td class="et">5.527</td>
+      <td>241.9</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-163">
+      <td>2026-09-20 11:39 UTC</td>
+      <td>TestTune</td>
+      <td>0.066</td>
+      <td>1.377</td>
+      <td>3.224</td>
+      <td class="et">5.649</td>
+      <td>241.7</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-164">
+      <td>2026-09-20 11:39 UTC</td>
+      <td colspan="7">Car level 5 to 6</td>
+    </tr>
+    
+
+    <tr id="row-165">
+      <td>2026-09-20 11:08 UTC</td>
+      <td>TestTune</td>
+      <td>0.280</td>
+      <td>1.357</td>
+      <td>3.208</td>
+      <td class="et">5.864</td>
+      <td>240.2</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-166">
+      <td>2026-09-20 06:12 UTC</td>
+      <td>PrizeMatch</td>
+      <td>—</td>
+      <td>1.339</td>
+      <td>3.185</td>
+      <td class="et">5.542</td>
+      <td>240.7</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-167">
+      <td>2026-09-20 06:04 UTC</td>
+      <td>MilestoneSnake_7</td>
+      <td>0.162</td>
+      <td>1.364</td>
+      <td>3.211</td>
+      <td class="et">5.732</td>
+      <td>241.4</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-168">
+      <td>2026-09-20 06:03 UTC</td>
+      <td>ChanceEncounter</td>
+      <td>0.133</td>
+      <td>1.358</td>
+      <td>3.208</td>
+      <td class="et">5.707</td>
+      <td>240.8</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-169">
+      <td>2026-09-20 06:03 UTC</td>
+      <td>UpgradeBracket</td>
+      <td>0.433</td>
+      <td>1.376</td>
+      <td>3.219</td>
+      <td class="et">6.015</td>
+      <td>242.0</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-170">
+      <td>2026-09-20 06:02 UTC</td>
+      <td>UpgradeBracket</td>
+      <td>0.067</td>
+      <td>1.357</td>
+      <td>3.205</td>
+      <td class="et">5.633</td>
+      <td>240.5</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-171">
+      <td>2026-09-20 06:01 UTC</td>
+      <td>TestTune</td>
+      <td>0.149</td>
+      <td>1.361</td>
+      <td>3.211</td>
+      <td class="et">5.733</td>
+      <td>241.0</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-172">
+      <td>2026-09-20 05:11 UTC</td>
+      <td>MilestoneSnake_6</td>
+      <td>0.050</td>
+      <td>1.360</td>
+      <td>3.202</td>
+      <td class="et">5.613</td>
+      <td>241.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-173">
+      <td>2026-09-20 05:10 UTC</td>
+      <td>MilestoneSnake_6</td>
+      <td>0.333</td>
+      <td>1.356</td>
+      <td>3.198</td>
+      <td class="et">5.882</td>
+      <td>242.1</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-174">
+      <td>2026-09-20 05:10 UTC</td>
+      <td colspan="7">Car level 4 to 5</td>
+    </tr>
+    
+
+    <tr id="row-175">
+      <td>2026-09-20 05:09 UTC</td>
+      <td>TestTune</td>
+      <td>0.150</td>
+      <td>1.362</td>
+      <td>3.212</td>
+      <td class="et">5.726</td>
+      <td>240.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-176">
+      <td>2026-09-20 04:30 UTC</td>
+      <td>WarmUpRace</td>
+      <td>0.250</td>
+      <td>1.372</td>
+      <td>3.221</td>
+      <td class="et">5.842</td>
+      <td>239.5</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-177">
+      <td>2026-09-20 04:28 UTC</td>
+      <td>TestTune</td>
+      <td>0.349</td>
+      <td>1.370</td>
+      <td>3.214</td>
+      <td class="et">5.925</td>
+      <td>241.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-178">
+      <td>2026-09-20 04:28 UTC</td>
+      <td colspan="7">Car level 3 to 4</td>
+    </tr>
+    
+
+    <tr id="row-179">
+      <td>2026-09-20 03:19 UTC</td>
+      <td>TestTune</td>
+      <td>0.117</td>
+      <td>1.345</td>
+      <td>3.195</td>
+      <td class="et">5.669</td>
+      <td>241.1</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-180">
+      <td>2026-09-20 02:51 UTC</td>
+      <td>MilestoneSnake_4</td>
+      <td>0.184</td>
+      <td>1.359</td>
+      <td>3.219</td>
+      <td class="et">5.777</td>
+      <td>239.8</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-181">
+      <td>2026-09-20 02:51 UTC</td>
+      <td>MilestoneSnake_5</td>
+      <td>0.133</td>
+      <td>1.393</td>
+      <td>3.260</td>
+      <td class="et">5.774</td>
+      <td>238.1</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-182">
+      <td>2026-09-20 02:49 UTC</td>
+      <td>MilestoneSnake_4</td>
+      <td>0.184</td>
+      <td>1.375</td>
+      <td>3.227</td>
+      <td class="et">5.780</td>
+      <td>240.8</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-183">
+      <td>2026-09-20 02:49 UTC</td>
+      <td>MilestoneSnake_4</td>
+      <td>0.233</td>
+      <td>1.362</td>
+      <td>3.208</td>
+      <td class="et">5.807</td>
+      <td>240.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-184">
+      <td>2026-09-20 02:48 UTC</td>
+      <td>MilestoneSnake_2</td>
+      <td>0.334</td>
+      <td>1.385</td>
+      <td>3.235</td>
+      <td class="et">5.938</td>
+      <td>235.5</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-185">
+      <td>2026-09-20 02:48 UTC</td>
+      <td>MilestoneSnake_3</td>
+      <td>0.133</td>
+      <td>1.345</td>
+      <td>3.194</td>
+      <td class="et">5.686</td>
+      <td>241.1</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-186">
+      <td>2026-09-20 02:47 UTC</td>
+      <td>MilestoneSnake_1</td>
+      <td>0.466</td>
+      <td>1.345</td>
+      <td>3.193</td>
+      <td class="et">6.017</td>
+      <td>241.3</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-187">
+      <td>2026-09-20 02:47 UTC</td>
+      <td colspan="7">Car level 1 to 3</td>
+    </tr>
+    
+
+    <tr id="row-188">
+      <td>2026-09-20 02:38 UTC</td>
+      <td>TestTune</td>
+      <td>0.066</td>
+      <td>1.372</td>
+      <td>3.226</td>
+      <td class="et">5.653</td>
+      <td>240.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-189">
+      <td>2026-09-20 02:36 UTC</td>
+      <td>MilestoneSnake_1</td>
+      <td>—</td>
+      <td>1.352</td>
+      <td>3.205</td>
+      <td class="et">5.569</td>
+      <td>240.9</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    
+
+    <tr id="row-190">
+      <td>2026-09-20 02:36 UTC</td>
+      <td>MilestoneSnake_1</td>
+      <td>—</td>
+      <td>1.297</td>
+      <td>3.146</td>
+      <td class="et">5.521</td>
+      <td>240.6</td>
+      <td class="stamp dq">DQ foul</td>
+    </tr>
+    </tbody>
+          </table>
+        </details>
+        <p class="note">Numbers come from production telemetry for this device id. Opponent and part names are ids, not invented history.</p>
+        <p class="back"><a href="index.html">All cars</a></p>
+        </main>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

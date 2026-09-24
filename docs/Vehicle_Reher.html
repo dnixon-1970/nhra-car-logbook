@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>REHER · Car Logbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,400;0,600;1,400;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="logbook.css">
+</head>
+<body style="--wash: #5c1418; --car: #f6f1e4; --stripe: #f6f1e4">
+  <div class="stage">
+    <div class="phone">
+      <div class="phone-screen">
+        <main>
+        <header class="mast">
+          <p class="brand">NHRA LEGENDS · CAR LOGBOOK</p>
+          <p class="eyebrow"><span>LEVEL 3</span><span>15 RACES</span><span>40% WINS</span></p>
+          
+    <label class="title-picker">
+      <span class="sr">Car</span>
+      <select class="car-title" onchange="if (this.value) location.href = this.value">
+        <option value="Vehicle_SoxMartin.html">SOXMARTIN</option><option value="Vehicle_RickDobbertin1986.html">RICKDOBBERTIN1986</option><option value="Vehicle_BobRiggle1966.html">BOBRIGGLE1966</option><option value="Vehicle_Muldowney1977.html">MULDOWNEY1977</option><option value="Vehicle_JasmineSalinas2026.html">JASMINESALINAS2026</option><option value="Vehicle_CaliforniaCharger.html">CALIFORNIACHARGER</option><option value="Vehicle_Pedregon2014.html">PEDREGON2014</option><option value="Vehicle_WarrenJohnson1992.html">WARRENJOHNSON1992</option><option value="Vehicle_Snake.html">SNAKE</option><option value="Vehicle_RonnieSox1968.html">RONNIESOX1968</option><option value="Vehicle_SwindlerA.html">SWINDLERA</option><option value="Vehicle_WarrenJohnson1997.html">WARRENJOHNSON1997</option><option value="Vehicle_WingedExpress.html">WINGEDEXPRESS</option><option value="Vehicle_AustinProck2025.html">AUSTINPROCK2025</option><option value="Vehicle_JimmyTaylor2025.html">JIMMYTAYLOR2025</option><option value="Vehicle_BobGlidden1972.html">BOBGLIDDEN1972</option><option value="Vehicle_DallasGlenn2025.html">DALLASGLENN2025</option><option value="Vehicle_PlanA.html">PLANA</option><option value="Vehicle_DallasGlenn2026.html">DALLASGLENN2026</option><option value="Vehicle_Reher.html" selected>REHER</option><option value="Vehicle_EricLatino2026Camaro.html">ERICLATINO2026CAMARO</option>
+      </select>
+    </label>
+    
+        </header>
+        
+    <section class="trend">
+      <label class="metric-picker">
+        <span>Daily average</span>
+        <select id="trend-metric" onchange="showTrend(this.value)">
+          <option value="et" selected>ET</option><option value="rt">RT</option><option value="sixty">60-FT</option><option value="three30">330-FT</option><option value="mph">MPH</option><option value="win">WIN %</option>
+        </select>
+      </label>
+      <p id="trend-empty" class="trend-empty" hidden>No times for this metric.</p>
+      
+    <svg id="trend-chart" class="trend-chart" viewBox="0 0 720 260" role="img">
+      <line x1="72" y1="16" x2="72" y2="224" stroke="#a2938d" stroke-width="1"/>
+      <line x1="72" y1="224" x2="704" y2="224" stroke="#a2938d" stroke-width="1"/>
+      <text id="trend-high" x="64" y="26" text-anchor="end">7.556</text>
+      <text id="trend-low" x="64" y="224" text-anchor="end">7.456</text>
+      <text id="trend-tick-0" x="72.0" y="252" text-anchor="start">09-19</text><text id="trend-tick-1" x="72.0" y="252" text-anchor="middle">09-19</text><text id="trend-tick-2" x="72.0" y="252" text-anchor="middle">09-19</text><text id="trend-tick-3" x="72.0" y="252" text-anchor="middle">09-19</text><text id="trend-tick-4" x="72.0" y="252" text-anchor="end">09-19</text>
+      <polyline id="trend-line" points="72.0,120.0" fill="none" stroke="var(--stripe)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle id="trend-dot" cx="72.0" cy="120.0" r="4" fill="var(--stripe)"/>
+    </svg>
+    
+    </section>
+    <script id="trend-series" type="application/json">{"et": {"digits": 3, "ticks": [{"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}], "points": [{"day": "2026-09-19", "value": 7.505635579427083, "x": 0.0}]}, "rt": {"digits": 3, "ticks": [{"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}], "points": [{"day": "2026-09-19", "value": 0.23070068359375, "x": 0.0}]}, "sixty": {"digits": 3, "ticks": [{"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}], "points": [{"day": "2026-09-19", "value": 1.7270589192708334, "x": 0.0}]}, "three30": {"digits": 3, "ticks": [{"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}], "points": [{"day": "2026-09-19", "value": 3.94918212890625, "x": 0.0}]}, "mph": {"digits": 1, "ticks": [{"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}], "points": [{"day": "2026-09-19", "value": 158.17133333333334, "x": 0.0}]}, "win": {"digits": 0, "ticks": [{"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}, {"day": "2026-09-19", "x": 0.0}], "points": [{"day": "2026-09-19", "value": 40.0, "x": 0.0}]}}</script>
+    <script>
+      function showTrend(name) {
+        var series = JSON.parse(document.getElementById("trend-series").textContent)[name];
+        var chart = document.getElementById("trend-chart");
+        var empty = document.getElementById("trend-empty");
+        var points = series.points;
+        if (!points.length) {
+          chart.hidden = true;
+          empty.hidden = false;
+          return;
+        }
+        chart.hidden = false;
+        empty.hidden = true;
+        var width = 720, height = 260, left = 72, right = 16, top = 16, bottom = 36;
+        var low = points[0].value, high = points[0].value;
+        points.forEach(function (point) {
+          if (point.value < low) low = point.value;
+          if (point.value > high) high = point.value;
+        });
+        if (high === low) { low -= 0.05; high += 0.05; }
+        var span = high - low;
+        var plotW = width - left - right;
+        var plotH = height - top - bottom;
+        var coords = points.map(function (point) {
+          var x = left + point.x * plotW;
+          var y = top + (1 - ((point.value - low) / span)) * plotH;
+          return x.toFixed(1) + "," + y.toFixed(1);
+        });
+        document.getElementById("trend-line").setAttribute("points", coords.join(" "));
+        var dot = document.getElementById("trend-dot");
+        if (points.length === 1) {
+          var pair = coords[0].split(",");
+          dot.setAttribute("cx", pair[0]);
+          dot.setAttribute("cy", pair[1]);
+          dot.removeAttribute("display");
+        } else {
+          dot.setAttribute("display", "none");
+        }
+        var digits = series.digits;
+        document.getElementById("trend-high").textContent = high.toFixed(digits);
+        document.getElementById("trend-low").textContent = low.toFixed(digits);
+        series.ticks.forEach(function (tick, index) {
+          var node = document.getElementById("trend-tick-" + index);
+          if (!node) return;
+          node.textContent = tick.day.slice(5);
+          node.setAttribute("x", (left + tick.x * plotW).toFixed(1));
+        });
+      }
+      showTrend("et");
+    </script>
+    
+        <section class="chief">
+          <h2>Tips from your crew chief</h2>
+          <p>ET went the wrong way, 7.379 in the first half and 7.616 in the second.</p>
+        </section>
+        <details class="sheet" id="raw-data">
+          <summary>Raw Data</summary>
+          <table>
+            <thead>
+              <tr>
+                <th>When</th><th>Event</th><th>RT</th><th>60</th><th>330</th><th>ET</th><th>MPH</th><th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+    <tr id="row-0">
+      <td>2026-09-19 21:23 UTC</td>
+      <td>ShowMatch</td>
+      <td>0.300</td>
+      <td>1.528</td>
+      <td>3.989</td>
+      <td class="et">8.400</td>
+      <td>128.0</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-1">
+      <td>2026-09-19 21:19 UTC</td>
+      <td>TestTune</td>
+      <td>0.250</td>
+      <td>1.547</td>
+      <td>3.819</td>
+      <td class="et">7.306</td>
+      <td>152.2</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-2">
+      <td>2026-09-19 21:19 UTC</td>
+      <td>TestTune</td>
+      <td>0.133</td>
+      <td>1.567</td>
+      <td>4.100</td>
+      <td class="et">8.394</td>
+      <td>127.5</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-3">
+      <td>2026-09-19 21:18 UTC</td>
+      <td>TestTune</td>
+      <td>0.283</td>
+      <td>2.061</td>
+      <td>4.999</td>
+      <td class="et">9.701</td>
+      <td>124.2</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-4">
+      <td>2026-09-19 15:14 UTC</td>
+      <td>MilestoneReher_4</td>
+      <td>0.183</td>
+      <td>1.531</td>
+      <td>3.440</td>
+      <td class="et">6.548</td>
+      <td>175.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-5">
+      <td>2026-09-19 15:14 UTC</td>
+      <td>MilestoneReher_4</td>
+      <td>0.149</td>
+      <td>1.780</td>
+      <td>3.796</td>
+      <td class="et">6.907</td>
+      <td>173.0</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr class="config-row" id="row-6">
+      <td>2026-09-19 15:14 UTC</td>
+      <td colspan="7">Car level 1 to 3</td>
+    </tr>
+    
+
+    <tr id="row-7">
+      <td>2026-09-19 15:13 UTC</td>
+      <td>TestTune</td>
+      <td>0.216</td>
+      <td>1.811</td>
+      <td>3.749</td>
+      <td class="et">6.837</td>
+      <td>176.5</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-8">
+      <td>2026-09-19 14:35 UTC</td>
+      <td>MilestoneReher_4</td>
+      <td>0.050</td>
+      <td>1.557</td>
+      <td>4.184</td>
+      <td class="et">7.718</td>
+      <td>152.2</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-9">
+      <td>2026-09-19 14:35 UTC</td>
+      <td>MilestoneReher_4</td>
+      <td>0.267</td>
+      <td>1.528</td>
+      <td>3.436</td>
+      <td class="et">6.837</td>
+      <td>156.9</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-10">
+      <td>2026-09-19 14:34 UTC</td>
+      <td>MilestoneReher_4</td>
+      <td>0.167</td>
+      <td>2.039</td>
+      <td>4.061</td>
+      <td class="et">7.120</td>
+      <td>177.5</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-11">
+      <td>2026-09-19 14:33 UTC</td>
+      <td>MilestoneReher_2</td>
+      <td>0.133</td>
+      <td>1.553</td>
+      <td>3.434</td>
+      <td class="et">6.532</td>
+      <td>173.2</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-12">
+      <td>2026-09-19 14:33 UTC</td>
+      <td>MilestoneReher_3</td>
+      <td>0.083</td>
+      <td>1.596</td>
+      <td>3.690</td>
+      <td class="et">6.693</td>
+      <td>178.1</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-13">
+      <td>2026-09-19 14:32 UTC</td>
+      <td>MilestoneReher_1</td>
+      <td>0.282</td>
+      <td>1.804</td>
+      <td>4.068</td>
+      <td class="et">7.250</td>
+      <td>182.6</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-14">
+      <td>2026-09-19 14:32 UTC</td>
+      <td>MilestoneReher_1</td>
+      <td>0.316</td>
+      <td>2.004</td>
+      <td>4.253</td>
+      <td class="et">7.745</td>
+      <td>158.5</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-15">
+      <td>2026-09-19 14:31 UTC</td>
+      <td>PrizeMatch</td>
+      <td>0.649</td>
+      <td>2.000</td>
+      <td>4.222</td>
+      <td class="et">8.598</td>
+      <td>136.4</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    </tbody>
+          </table>
+        </details>
+        <p class="note">Numbers come from production telemetry for this device id. Opponent and part names are ids, not invented history.</p>
+        <p class="back"><a href="index.html">All cars</a></p>
+        </main>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

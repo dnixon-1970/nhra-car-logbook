@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ERICLATINO2026CAMARO · Car Logbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,400;0,600;1,400;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="logbook.css">
+</head>
+<body style="--wash: #2a1212; --car: #fcc83c; --stripe: #fcc83c">
+  <div class="stage">
+    <div class="phone">
+      <div class="phone-screen">
+        <main>
+        <header class="mast">
+          <p class="brand">NHRA LEGENDS · CAR LOGBOOK</p>
+          <p class="eyebrow"><span>LEVEL 1</span><span>12 RACES</span><span>58% WINS</span></p>
+          
+    <label class="title-picker">
+      <span class="sr">Car</span>
+      <select class="car-title" onchange="if (this.value) location.href = this.value">
+        <option value="Vehicle_SoxMartin.html">SOXMARTIN</option><option value="Vehicle_RickDobbertin1986.html">RICKDOBBERTIN1986</option><option value="Vehicle_BobRiggle1966.html">BOBRIGGLE1966</option><option value="Vehicle_Muldowney1977.html">MULDOWNEY1977</option><option value="Vehicle_JasmineSalinas2026.html">JASMINESALINAS2026</option><option value="Vehicle_CaliforniaCharger.html">CALIFORNIACHARGER</option><option value="Vehicle_Pedregon2014.html">PEDREGON2014</option><option value="Vehicle_WarrenJohnson1992.html">WARRENJOHNSON1992</option><option value="Vehicle_Snake.html">SNAKE</option><option value="Vehicle_RonnieSox1968.html">RONNIESOX1968</option><option value="Vehicle_SwindlerA.html">SWINDLERA</option><option value="Vehicle_WarrenJohnson1997.html">WARRENJOHNSON1997</option><option value="Vehicle_WingedExpress.html">WINGEDEXPRESS</option><option value="Vehicle_AustinProck2025.html">AUSTINPROCK2025</option><option value="Vehicle_JimmyTaylor2025.html">JIMMYTAYLOR2025</option><option value="Vehicle_BobGlidden1972.html">BOBGLIDDEN1972</option><option value="Vehicle_DallasGlenn2025.html">DALLASGLENN2025</option><option value="Vehicle_PlanA.html">PLANA</option><option value="Vehicle_DallasGlenn2026.html">DALLASGLENN2026</option><option value="Vehicle_Reher.html">REHER</option><option value="Vehicle_EricLatino2026Camaro.html" selected>ERICLATINO2026CAMARO</option>
+      </select>
+    </label>
+    
+        </header>
+        
+    <section class="trend">
+      <label class="metric-picker">
+        <span>Daily average</span>
+        <select id="trend-metric" onchange="showTrend(this.value)">
+          <option value="et" selected>ET</option><option value="rt">RT</option><option value="sixty">60-FT</option><option value="three30">330-FT</option><option value="mph">MPH</option><option value="win">WIN %</option>
+        </select>
+      </label>
+      <p id="trend-empty" class="trend-empty" hidden>No times for this metric.</p>
+      
+    <svg id="trend-chart" class="trend-chart" viewBox="0 0 720 260" role="img">
+      <line x1="72" y1="16" x2="72" y2="224" stroke="#a2938d" stroke-width="1"/>
+      <line x1="72" y1="224" x2="704" y2="224" stroke="#a2938d" stroke-width="1"/>
+      <text id="trend-high" x="64" y="26" text-anchor="end">7.479</text>
+      <text id="trend-low" x="64" y="224" text-anchor="end">7.379</text>
+      <text id="trend-tick-0" x="72.0" y="252" text-anchor="start">09-21</text><text id="trend-tick-1" x="72.0" y="252" text-anchor="middle">09-21</text><text id="trend-tick-2" x="72.0" y="252" text-anchor="middle">09-21</text><text id="trend-tick-3" x="72.0" y="252" text-anchor="middle">09-21</text><text id="trend-tick-4" x="72.0" y="252" text-anchor="end">09-21</text>
+      <polyline id="trend-line" points="72.0,120.0" fill="none" stroke="var(--stripe)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle id="trend-dot" cx="72.0" cy="120.0" r="4" fill="var(--stripe)"/>
+    </svg>
+    
+    </section>
+    <script id="trend-series" type="application/json">{"et": {"digits": 3, "ticks": [{"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}], "points": [{"day": "2026-09-21", "value": 7.428702036539714, "x": 0.0}]}, "rt": {"digits": 3, "ticks": [{"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}], "points": [{"day": "2026-09-21", "value": 0.3441810607910156, "x": 0.0}]}, "sixty": {"digits": 3, "ticks": [{"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}], "points": [{"day": "2026-09-21", "value": 1.8689359029134114, "x": 0.0}]}, "three30": {"digits": 3, "ticks": [{"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}], "points": [{"day": "2026-09-21", "value": 4.02456537882487, "x": 0.0}]}, "mph": {"digits": 1, "ticks": [{"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}], "points": [{"day": "2026-09-21", "value": 169.61916666666667, "x": 0.0}]}, "win": {"digits": 0, "ticks": [{"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}, {"day": "2026-09-21", "x": 0.0}], "points": [{"day": "2026-09-21", "value": 58.333333333333336, "x": 0.0}]}}</script>
+    <script>
+      function showTrend(name) {
+        var series = JSON.parse(document.getElementById("trend-series").textContent)[name];
+        var chart = document.getElementById("trend-chart");
+        var empty = document.getElementById("trend-empty");
+        var points = series.points;
+        if (!points.length) {
+          chart.hidden = true;
+          empty.hidden = false;
+          return;
+        }
+        chart.hidden = false;
+        empty.hidden = true;
+        var width = 720, height = 260, left = 72, right = 16, top = 16, bottom = 36;
+        var low = points[0].value, high = points[0].value;
+        points.forEach(function (point) {
+          if (point.value < low) low = point.value;
+          if (point.value > high) high = point.value;
+        });
+        if (high === low) { low -= 0.05; high += 0.05; }
+        var span = high - low;
+        var plotW = width - left - right;
+        var plotH = height - top - bottom;
+        var coords = points.map(function (point) {
+          var x = left + point.x * plotW;
+          var y = top + (1 - ((point.value - low) / span)) * plotH;
+          return x.toFixed(1) + "," + y.toFixed(1);
+        });
+        document.getElementById("trend-line").setAttribute("points", coords.join(" "));
+        var dot = document.getElementById("trend-dot");
+        if (points.length === 1) {
+          var pair = coords[0].split(",");
+          dot.setAttribute("cx", pair[0]);
+          dot.setAttribute("cy", pair[1]);
+          dot.removeAttribute("display");
+        } else {
+          dot.setAttribute("display", "none");
+        }
+        var digits = series.digits;
+        document.getElementById("trend-high").textContent = high.toFixed(digits);
+        document.getElementById("trend-low").textContent = low.toFixed(digits);
+        series.ticks.forEach(function (tick, index) {
+          var node = document.getElementById("trend-tick-" + index);
+          if (!node) return;
+          node.textContent = tick.day.slice(5);
+          node.setAttribute("x", (left + tick.x * plotW).toFixed(1));
+        });
+      }
+      showTrend("et");
+    </script>
+    
+        <section class="chief">
+          <h2>Tips from your crew chief</h2>
+          <p>Win rate fell from 83% to 33% and the ET did not save it, 7.284 in the first half and 7.574 in the second. 0 red lights in 12 runs.</p>
+        </section>
+        <details class="sheet" id="raw-data">
+          <summary>Raw Data</summary>
+          <table>
+            <thead>
+              <tr>
+                <th>When</th><th>Event</th><th>RT</th><th>60</th><th>330</th><th>ET</th><th>MPH</th><th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+    <tr id="row-0">
+      <td>2026-09-21 21:07 UTC</td>
+      <td>TestTune</td>
+      <td>0.300</td>
+      <td>2.004</td>
+      <td>4.230</td>
+      <td class="et">7.551</td>
+      <td>170.4</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-1">
+      <td>2026-09-21 20:28 UTC</td>
+      <td>TestTune</td>
+      <td>0.584</td>
+      <td>1.807</td>
+      <td>3.844</td>
+      <td class="et">7.385</td>
+      <td>175.0</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-2">
+      <td>2026-09-21 20:28 UTC</td>
+      <td>TestTune</td>
+      <td>0.316</td>
+      <td>1.848</td>
+      <td>4.052</td>
+      <td class="et">7.557</td>
+      <td>162.0</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-3">
+      <td>2026-09-21 20:13 UTC</td>
+      <td>PrizeMatch</td>
+      <td>0.449</td>
+      <td>1.735</td>
+      <td>3.855</td>
+      <td class="et">7.372</td>
+      <td>168.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-4">
+      <td>2026-09-21 20:07 UTC</td>
+      <td>MilestoneEricLatino2026Camaro_4</td>
+      <td>0.150</td>
+      <td>1.989</td>
+      <td>4.307</td>
+      <td class="et">7.735</td>
+      <td>160.4</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-5">
+      <td>2026-09-21 20:07 UTC</td>
+      <td>MilestoneEricLatino2026Camaro_4</td>
+      <td>0.216</td>
+      <td>2.226</td>
+      <td>4.416</td>
+      <td class="et">7.841</td>
+      <td>160.0</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-6">
+      <td>2026-09-21 20:06 UTC</td>
+      <td>MilestoneEricLatino2026Camaro_3</td>
+      <td>0.349</td>
+      <td>1.819</td>
+      <td>3.800</td>
+      <td class="et">6.999</td>
+      <td>180.2</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-7">
+      <td>2026-09-21 20:06 UTC</td>
+      <td>MilestoneEricLatino2026Camaro_4</td>
+      <td>0.383</td>
+      <td>1.686</td>
+      <td>3.755</td>
+      <td class="et">7.103</td>
+      <td>174.9</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-8">
+      <td>2026-09-21 20:05 UTC</td>
+      <td>MilestoneEricLatino2026Camaro_2</td>
+      <td>0.266</td>
+      <td>1.854</td>
+      <td>3.858</td>
+      <td class="et">7.094</td>
+      <td>173.8</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-9">
+      <td>2026-09-21 20:05 UTC</td>
+      <td>MilestoneEricLatino2026Camaro_3</td>
+      <td>0.366</td>
+      <td>2.006</td>
+      <td>4.334</td>
+      <td class="et">7.834</td>
+      <td>165.9</td>
+      <td class="stamp loss">LOSS</td>
+    </tr>
+    
+
+    <tr id="row-10">
+      <td>2026-09-21 20:04 UTC</td>
+      <td>ChanceEncounter</td>
+      <td>0.433</td>
+      <td>1.614</td>
+      <td>3.828</td>
+      <td class="et">7.402</td>
+      <td>168.1</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    
+
+    <tr id="row-11">
+      <td>2026-09-21 20:04 UTC</td>
+      <td>MilestoneEricLatino2026Camaro_1</td>
+      <td>0.317</td>
+      <td>1.839</td>
+      <td>4.015</td>
+      <td class="et">7.272</td>
+      <td>175.7</td>
+      <td class="stamp win">WIN</td>
+    </tr>
+    </tbody>
+          </table>
+        </details>
+        <p class="note">Numbers come from production telemetry for this device id. Opponent and part names are ids, not invented history.</p>
+        <p class="back"><a href="index.html">All cars</a></p>
+        </main>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
