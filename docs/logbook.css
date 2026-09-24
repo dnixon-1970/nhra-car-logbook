@@ -361,6 +361,13 @@ tr.mark-hit td {
   color: var(--metal);
 }
 
+.car-link {
+  color: var(--navy);
+  font-style: italic;
+  font-weight: 700;
+  text-decoration: none;
+}
+
 .driver-block { margin: 18px 0; }
 .driver-block h2 {
   margin: 0 0 8px;

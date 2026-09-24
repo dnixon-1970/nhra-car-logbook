@@ -250,7 +250,7 @@ def render_driver(user_id: str, races: list[RaceRow]) -> str:
         </section>
         <section class="driver-block">
           <h2>Cars</h2>
-          {_car_table(record)}
+          {_car_table(user_id, record)}
         </section>
         <p class="back"><a href="/cars?user_id={_esc(user_id)}">All cars</a></p>
         """,
@@ -264,15 +264,16 @@ def _book_links(user_id: str) -> str:
     return f'<p class="back links">{cars}{driver}</p>'
 
 
-def _car_table(record: dict[str, Any]) -> str:
-    """One row per car in the player's book, most raced first."""
+def _car_table(user_id: str, record: dict[str, Any]) -> str:
+    """One row per car in the player's book, most raced first. The name opens that car."""
     if not record["cars"]:
         return "<p class='empty'>No completed races in this window.</p>"
     rows = []
     for car in record["cars"]:
+        href = f"/logbook?user_id={_esc(user_id)}&car={_esc(car['car'])}"
         rows.append(
             "<tr>"
-            f"<td>{_esc(_title_name(car['car']))}</td>"
+            f"<td><a class=\"car-link\" href=\"{href}\">{_esc(_title_name(car['car']))}</a></td>"
             f"<td>{_esc(car['races'])}</td>"
             f"<td>{_esc(car['wins'])}-{_esc(car['losses'])}</td>"
             f"<td class='et'>{_esc(_fmt(car['best_et']))}</td>"

@@ -251,6 +251,7 @@ class LogbookDataTests(unittest.TestCase):
         self.assertIn("SOXMARTIN", page)
         self.assertIn("0.041", page)
         self.assertIn(">All cars<", page)
+        self.assertIn('href="/logbook?user_id=device-1&car=Vehicle_SoxMartin"', page)
         self.assertNotIn("Hometown", page)
         book = render_logbook("device-1", "Vehicle_Muldowney1977", races)
         self.assertIn('href="/driver?user_id=device-1"', book)
